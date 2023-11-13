@@ -1,10 +1,10 @@
-import moment from 'moment'
 import CryptoJS from 'crypto-js'
 import qs from 'qs'
+import dayjs from 'dayjs'
 import { SALT, USER_AGENT } from '@/values/Pixiv'
 
-export const getTimeAndHash = () => {
-  const time = moment(new Date()).format()
+const getTimeAndHash = () => {
+  const time = dayjs().format()
   const hash = CryptoJS.MD5(time + SALT).toString()
   return { time, hash }
 }
@@ -12,19 +12,17 @@ export const getTimeAndHash = () => {
 export const generateCodeVerifier = () => {
   const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~'
-  let code_verifier = ''
-  let code_challenge = ''
+  let codeVerifier = ''
+  let codeChallenge = ''
   for (let i = 0; i < 128; i++) {
-    code_verifier += possible.charAt(
-      Math.floor(Math.random() * possible.length),
-    )
+    codeVerifier += possible.charAt(Math.floor(Math.random() * possible.length))
   }
-  code_challenge = CryptoJS.SHA256(code_verifier)
+  codeChallenge = CryptoJS.SHA256(codeVerifier)
     .toString(CryptoJS.enc.Base64)
     .replace(/[=]/g, '')
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
-  return { code_verifier, code_challenge }
+  return { code_verifier: codeVerifier, code_challenge: codeChallenge }
 }
 
 export const getHeader = () => {

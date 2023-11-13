@@ -1,16 +1,6 @@
 import { Button, Linking, View } from 'react-native'
-import { error, info, log } from '@/utils/LogUtils'
-import { useRoute } from '@react-navigation/native'
 import { auth, generateCodeVerifier, getHeader } from '@/utils/PixivUtils'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import useAppActiveEffect from '@/hooks/useAppActiveEffect'
-import {
-  AUTH_TOKEN_URL,
-  CLIENT_ID,
-  CLIENT_SECRET,
-  LOGIN_URL,
-} from '@/values/Pixiv'
-import React, { Component } from 'react'
 import WebView from 'react-native-webview'
 
 const LoginWebViewScreen = () => {
