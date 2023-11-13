@@ -4,12 +4,12 @@ pre-commit:
   commands:
     prettier:
       glob: "*.{js,ts,jsx,tsx}"
-      run: npx prettier --write {staged_files} && git add {staged_files}
+      run: prettier --write {staged_files} && git add {staged_files}
     lint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: npx eslint {staged_files} --fix
+      run: eslint {staged_files} --fix
 commit-msg:
   parallel: true
   commands:
     commitlint:
-      run: npx commitlint --edit
+      run: commitlint --edit
