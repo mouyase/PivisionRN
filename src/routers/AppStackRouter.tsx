@@ -14,10 +14,18 @@ const AppStackRouter = () => {
         component={Splash}
         options={{
           headerShown: false,
-          gestureEnabled: false,
+          statusBarTranslucent: true,
         }}
       />
-      <Stack.Screen name='Login' component={LoginScreen} />
+      <Stack.Screen
+        name='Login'
+        component={LoginScreen}
+        options={{
+          statusBarTranslucent: true,
+          headerShown: false,
+          // headerTransparent: true,
+        }}
+      />
       <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name='LoginWebView' component={LoginWebViewScreen} />
     </Stack.Navigator>

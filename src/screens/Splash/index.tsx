@@ -1,54 +1,19 @@
-import { Animated, View } from 'react-native'
+import { Animated, StatusBar, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import api from '@/api'
-import { useEffect, useState } from 'react'
-import FlatList = Animated.FlatList
-import FastImage from 'react-native-fast-image'
+import { useEffect } from 'react'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useTimeout } from 'ahooks'
 
 const Splash = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
-  const [imageUrlList, setImageUrlList] = useState<string[]>([])
+  useTimeout(() => {
+    navigation.navigate('Login')
+  }, 1000)
 
-  useEffect(() => {
-    api
-      .getWalkthrough()
-      .then(value => {
-        setImageUrlList(
-          value?.illusts?.map((item: any) => {
-            return item.image_urls.medium
-          }),
-        )
-      })
-      .catch(reason => {
-        console.log(reason)
-      })
-  }, [])
-
-  const renderItem = ({ item }: any) => {
-    return (
-      <>
-        <FastImage
-          style={{ width: 200, height: 200, backgroundColor: 'red' }}
-          source={{
-            uri: item,
-            headers: { Referer: 'https://www.pixiv.net' },
-            priority: FastImage.priority.normal,
-          }}
-          resizeMode={FastImage.resizeMode.cover}
-        />
-      </>
-    )
-  }
   return (
     <>
-      <View style={{ flex: 1 }}>
-        <FlatList
-          data={imageUrlList}
-          renderItem={renderItem}
-          style={{ flex: 1 }}
-        />
-      </View>
+      <View style={{ flex: 1, backgroundColor: '#0096fa' }} />
     </>
   )
 }

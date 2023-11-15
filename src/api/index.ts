@@ -1,8 +1,9 @@
 import Fetch from '@/utils/Fetch'
 
-const api = {
-  getWalkthrough: async () => {
-    return Fetch.get('/v1/walkthrough/illusts')
-  },
+const getWalkthrough = async (): Promise<illustsResponseType> => {
+  return await Fetch.get('/v1/walkthrough/illusts')
 }
+
+const api = { getWalkthrough }
+
 export default api

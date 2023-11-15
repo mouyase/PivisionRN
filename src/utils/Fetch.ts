@@ -1,5 +1,6 @@
 import qs from 'qs'
 import Pixiv from '@/values/Pixiv'
+import PixivUtils from '@/utils/PixivUtils'
 
 class FetchClass {
   private constructor() {}
@@ -22,14 +23,7 @@ class FetchClass {
   public get = async (url: string, params = {}) => {
     return fetch(Fetch.host + url, {
       method: 'GET',
-      headers: {
-        'accept-language': 'zh_CN',
-        'app-accept-language': 'zh-hans',
-        'app-os': 'android',
-        'app-os-version': '12',
-        'app-version': '6.5.0',
-        'content-type': 'application/x-www-form-urlencoded',
-      },
+      headers: PixivUtils.getHeader(),
       body: qs.stringify(params),
     }).then(value => {
       return value.json()

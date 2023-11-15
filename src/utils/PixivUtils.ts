@@ -1,15 +1,38 @@
 import CryptoJS from 'crypto-js'
 import qs from 'qs'
 import dayjs from 'dayjs'
-import { SALT, USER_AGENT } from '@/values/Pixiv'
+import Pixiv from '@/values/Pixiv'
+
+type AuthResponseType = {
+  access_token: string
+  expires_in: number
+  refresh_token: string
+  scope: string
+  token_type: string
+  user: {
+    account: string
+    id: string
+    is_mail_authorized: boolean
+    is_premium: boolean
+    mail_address: string
+    name: string
+    profile_image_urls: {
+      px_16x16: string
+      px_170x170: string
+      px_50x50: string
+    }
+    require_policy_agreement: boolean
+    x_restrict: number
+  }
+}
 
 const getTimeAndHash = () => {
   const time = dayjs().format()
-  const hash = CryptoJS.MD5(time + SALT).toString()
+  const hash = CryptoJS.MD5(time + Pixiv.SALT).toString()
   return { time, hash }
 }
 
-export const generateCodeVerifier = () => {
+const generateCodeVerifier = () => {
   const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~'
   let codeVerifier = ''
@@ -25,72 +48,65 @@ export const generateCodeVerifier = () => {
   return { code_verifier: codeVerifier, code_challenge: codeChallenge }
 }
 
-export const getHeader = () => {
+const getHeader = () => {
   const { time, hash } = getTimeAndHash()
   return {
-    'user-agent': USER_AGENT,
+    'user-agent': Pixiv.USER_AGENT,
     'accept-language': 'zh_CN',
     'app-accept-language': 'zh-hans',
     'app-os': 'android',
     'app-os-version': '12',
-    'app-version': '6.5.0',
+    'app-version': Pixiv.APP_VERSION,
     'content-type': 'application/x-www-form-urlencoded',
     'x-client-time': time,
     'x-client-hash': hash,
   }
 }
 
-export const auth = async (code_verifier: string, code: string) => {
-  let { time, hash } = getTimeAndHash()
-  return fetch('https://oauth.secure.pixiv.net/auth/token', {
+const auth = async (
+  code_verifier: string,
+  code: string,
+): Promise<AuthResponseType> => {
+  return fetch(Pixiv.AUTH_TOKEN_URL, {
     method: 'POST',
-    headers: {
-      'user-agent': USER_AGENT,
-      'accept-language': 'zh_CN',
-      'app-accept-language': 'zh-hans',
-      'app-os': 'android',
-      'app-os-version': '12',
-      'app-version': '6.5.0',
-      'content-type': 'application/x-www-form-urlencoded',
-      'x-client-time': time,
-      'x-client-hash': hash,
-    },
+    headers: getHeader(),
     body: qs.stringify({
-      code_verifier: code_verifier,
-      code: code,
       grant_type: 'authorization_code',
-      redirect_uri:
-        'https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback',
-      client_id: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
-      client_secret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
+      code_verifier,
+      code,
+      redirect_uri: Pixiv.REDIRECT_URI,
+      client_id: Pixiv.CLIENT_ID,
+      client_secret: Pixiv.CLIENT_SECRET,
+      include_policy: 'true',
+    }),
+  }).then(response => {
+    if (response.status === 200) {
+      return response.json()
+    } else {
+      return Promise.reject(response.status)
+    }
+  })
+}
+
+const refresh = async (refresh_token: string): Promise<AuthResponseType> => {
+  return fetch(Pixiv.AUTH_TOKEN_URL, {
+    method: 'POST',
+    headers: getHeader(),
+    body: qs.stringify({
+      grant_type: 'refresh_token',
+      refresh_token,
+      redirect_uri: Pixiv.REDIRECT_URI,
+      client_id: Pixiv.CLIENT_ID,
+      client_secret: Pixiv.CLIENT_SECRET,
       include_policy: 'true',
     }),
   }).then(response => response.json())
 }
 
-export const refresh = async (refresh_token: string) => {
-  let { time, hash } = getTimeAndHash()
-  return fetch('https://oauth.secure.pixiv.net/auth/token', {
-    method: 'POST',
-    headers: {
-      'user-agent': 'PixivAndroidApp/6.5.0 (Android 10; Xiaomi Mi 10)',
-      'accept-language': 'zh_CN',
-      'app-accept-language': 'zh-hans',
-      'app-os': 'android',
-      'app-os-version': '12',
-      'app-version': '6.5.0',
-      'content-type': 'application/x-www-form-urlencoded',
-      'x-client-time': time,
-      'x-client-hash': hash,
-    },
-    body: qs.stringify({
-      refresh_token: refresh_token,
-      grant_type: 'refresh_token',
-      redirect_uri:
-        'https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback',
-      client_id: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
-      client_secret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
-      include_policy: 'true',
-    }),
-  }).then(response => response.json())
+const PixivUtils = {
+  auth,
+  refresh,
+  generateCodeVerifier,
+  getHeader,
 }
+export default PixivUtils
