@@ -36,3 +36,9 @@ declare type illustsResponseType = {
   illusts: illust[]
   next_url: string
 }
+
+declare type recommendedResponseType = {
+  illusts: illust[]
+  ranking_illusts: illust[]
+  next_url: string
+}

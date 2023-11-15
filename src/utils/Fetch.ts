@@ -11,6 +11,7 @@ class FetchClass {
   }
 
   private _host = Pixiv.API_HOST
+  private _token = ''
 
   set host(value: string) {
     this._host = value
@@ -20,11 +21,63 @@ class FetchClass {
     return this._host
   }
 
-  public get = async (url: string, params = {}) => {
-    return fetch(Fetch.host + url, {
+  get token(): string {
+    return this._token
+  }
+
+  set token(value: string) {
+    this._token = value
+  }
+
+  public get = async (url: string, originParams = {}) => {
+    const headers = {
+      ...PixivUtils.getHeader(),
+      ...(this._token ? { Authorization: `Bearer ${this._token}` } : {}),
+    }
+    const params = qs.stringify(originParams)
+    console.info(
+      '\x1b[32m' +
+        '[Fetch]' +
+        '\n\x1b[34m' +
+        'url: ' +
+        url +
+        '\n\x1b[33m' +
+        'headers: ' +
+        JSON.stringify(headers) +
+        '\n\x1b[34m' +
+        'body: ' +
+        JSON.stringify(originParams),
+    )
+    return fetch(Fetch.host + url + '?' + params, {
       method: 'GET',
-      headers: PixivUtils.getHeader(),
-      body: qs.stringify(params),
+      headers,
+    }).then(value => {
+      return value.json()
+    })
+  }
+  public post = async (url: string, originBody = {}) => {
+    const headers = {
+      ...PixivUtils.getHeader(),
+      ...(this._token ? { Authorization: `Bearer ${this._token}` } : {}),
+    }
+    const body = qs.stringify(originBody)
+    console.info(
+      '\x1b[32m' +
+        '[Fetch]' +
+        '\n\x1b[34m' +
+        'url: ' +
+        url +
+        '\n\x1b[33m' +
+        'headers: ' +
+        JSON.stringify(headers) +
+        '\n\x1b[34m' +
+        'body: ' +
+        JSON.stringify(body),
+    )
+    return fetch(Fetch.host + url, {
+      method: 'POST',
+      headers,
+      body,
     }).then(value => {
       return value.json()
     })
