@@ -5,7 +5,6 @@ import Account from '@/utils/Account'
 import BackgroundView from '@/screens/LoginScreen/components/BackgroundView'
 import { ActivityIndicator, Button, Dialog, Portal } from 'react-native-paper'
 import { Text } from 'react-native-paper'
-import Fetch from '@/utils/Fetch'
 
 const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -15,10 +14,6 @@ const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
       setIsLoading(true)
       Account.doAuth(code)
         .then(value => {
-          console.log(value.user.name)
-          console.log(value.access_token)
-          Fetch.token = value.access_token
-          console.log(Fetch.token)
           ToastAndroid.show('登陆成功 ' + value.user.name, ToastAndroid.LONG)
           setIsLoading(false)
           navigation.navigate('Home')

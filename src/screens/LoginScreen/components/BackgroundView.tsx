@@ -10,6 +10,7 @@ import {
 import FastImage from 'react-native-fast-image'
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import api from '@/api'
+import Pixiv from '@/values/Pixiv'
 
 const BackgroundView = () => {
   const [imageUrlList, setImageUrlList] = useState<string[][]>(
@@ -61,8 +62,7 @@ const BackgroundView = () => {
 
   useEffect(() => {
     doTranslate().start()
-  }, [doTranslate, screenHeight, screenWidth])
-
+  }, [doTranslate])
   const renderItem: ListRenderItem<string> = ({ item }) => {
     return <ListItem url={item} />
   }
@@ -108,7 +108,7 @@ const ListItem: FC<{ url: string }> = ({ url }) => {
   const { width: screenWidth } = useWindowDimensions()
   const fade = useRef(new Animated.Value(0)).current
 
-  const onLoadEnd = () => {
+  const onLoad = () => {
     Animated.timing(fade, {
       toValue: 1,
       duration: 500,
@@ -121,13 +121,13 @@ const ListItem: FC<{ url: string }> = ({ url }) => {
       {url && (
         <Animated.View style={{ opacity: fade, flex: 1 }}>
           <FastImage
-            onLoadEnd={onLoadEnd}
+            onLoad={onLoad}
             style={{
               flex: 1,
             }}
             source={{
               uri: url,
-              headers: { Referer: 'https://www.pixiv.net' },
+              headers: { Referer: Pixiv.REFERER },
               priority: FastImage.priority.normal,
             }}
             resizeMode={FastImage.resizeMode.cover}

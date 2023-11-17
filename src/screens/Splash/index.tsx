@@ -1,15 +1,29 @@
-import { Animated, StatusBar, View } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { View } from 'react-native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import Account from '@/utils/Account'
 import { useEffect } from 'react'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { useTimeout } from 'ahooks'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack/src/types'
 
-const Splash = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+const checkLogin = async () => {
+  try {
+    const tokens = await Account.getToken()
+    await Account.doAuthWithToken(tokens.refresh_token)
+    return Promise.resolve()
+  } catch (e) {
+    return Promise.reject()
+  }
+}
 
-  useTimeout(() => {
-    navigation.navigate('Login')
-  }, 1000)
+const Splash = ({ route, navigation }: NativeStackScreenProps<any>) => {
+  useEffect(() => {
+    checkLogin()
+      .then(() => {
+        navigation.navigate('Home')
+      })
+      .catch(() => {
+        navigation.navigate('Login')
+      })
+  }, [navigation])
 
   return (
     <>
