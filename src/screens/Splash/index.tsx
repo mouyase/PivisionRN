@@ -25,10 +25,6 @@ const Splash = ({ route, navigation }: NativeStackScreenProps<any>) => {
       })
   }, [navigation])
 
-  return (
-    <>
-      <View style={{ flex: 1, backgroundColor: '#0096fa' }} />
-    </>
-  )
+  return <View style={{ flex: 1, backgroundColor: '#0096fa' }} />
 }
 export default Splash
