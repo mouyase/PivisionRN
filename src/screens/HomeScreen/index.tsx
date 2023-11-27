@@ -3,6 +3,7 @@ import { Tabs, TabScreen, TabsProvider } from 'react-native-paper-tabs'
 import RecommendedView from '@/screens/HomeScreen/components/RecommendedView'
 
 const HomeScreen = () => {
+  // @ts-ignore
   return (
     <TabsProvider
       defaultIndex={0}
