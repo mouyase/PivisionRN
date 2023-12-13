@@ -8,7 +8,7 @@ const useAppActiveEffect = (effectCallback: EffectCallback) => {
   const [appStateVisible, setAppStateVisible] = useState(appState.current)
 
   useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
       appState.current = nextAppState
       setAppStateVisible(appState.current)
     })

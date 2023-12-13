@@ -51,7 +51,7 @@ class FetchClass {
     return fetch(Fetch.host + url + '?' + params, {
       method: 'GET',
       headers,
-    }).then(value => {
+    }).then((value) => {
       return value.json()
     })
   }
@@ -78,7 +78,7 @@ class FetchClass {
       method: 'POST',
       headers,
       body,
-    }).then(value => {
+    }).then((value) => {
       return value.json()
     })
   }

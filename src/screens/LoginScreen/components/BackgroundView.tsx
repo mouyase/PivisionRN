@@ -20,8 +20,8 @@ const BackgroundView = () => {
   useEffect(() => {
     api
       .getWalkthrough()
-      .then(value => {
-        const array = value.illusts.map(item => item.image_urls.square_medium)
+      .then((value) => {
+        const array = value.illusts.map((item) => item.image_urls.square_medium)
         let index = 0
         let newArray = []
         while (index < array.length) {
@@ -30,7 +30,7 @@ const BackgroundView = () => {
         setImageUrlList(newArray)
         console.log('加载到数据')
       })
-      .catch(reason => {
+      .catch((reason) => {
         console.error(reason)
       })
   }, [])

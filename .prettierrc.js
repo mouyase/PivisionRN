@@ -1,5 +1,5 @@
 module.exports = {
-  arrowParens: 'avoid', // 箭头函数是否使用括号，avoid是尽可能不用，always是全都用
+  arrowParens: 'always', // 箭头函数是否使用括号，avoid是尽可能不用，always是全都用
   bracketSameLine: true, // >符号是否拆行放置
   jsxBracketSameLine: true, // jsx内>符号是否拆行放置
   bracketSpacing: true, // 对象内是否添加空格

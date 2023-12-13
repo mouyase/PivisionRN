@@ -79,7 +79,7 @@ const auth = async (
       client_secret: Pixiv.CLIENT_SECRET,
       include_policy: 'true',
     }),
-  }).then(response => {
+  }).then((response) => {
     if (response.status === 200) {
       return response.json()
     } else {
@@ -100,7 +100,7 @@ const refresh = async (refresh_token: string): Promise<AuthResponseType> => {
       client_secret: Pixiv.CLIENT_SECRET,
       include_policy: 'true',
     }),
-  }).then(response => response.json())
+  }).then((response) => response.json())
 }
 
 const PixivUtils = {

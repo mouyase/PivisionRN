@@ -16,11 +16,11 @@ const RecommendedView = () => {
   useEffect(() => {
     api
       .getRecommended()
-      .then(value => {
+      .then((value) => {
         setNextUrl(value.next_url)
         setIllustList(value.illusts)
       })
-      .catch(reason => {
+      .catch((reason) => {
         console.error(reason)
       })
   }, [])
@@ -32,7 +32,7 @@ const RecommendedView = () => {
     console.log('触底反弹', nextUrl)
     if (nextUrl) {
       api.getNext(nextUrl).then((value: recommendedResponseType) => {
-        setIllustList(list => list.concat(value.illusts))
+        setIllustList((list) => list.concat(value.illusts))
       })
     }
   }
@@ -60,30 +60,3 @@ const RecommendedView = () => {
   )
 }
 export default RecommendedView
-
-const ListItem = ({
-  item,
-  numColumns,
-}: {
-  item: illust
-  numColumns: number
-}) => {
-  const { width, height } = ListUtils.getListItemWH({
-    width: item.width,
-    height: item.height,
-    numColumns,
-  })
-  return (
-    <View style={{ width, height }}>
-      <FastImage
-        style={{ flex: 1 }}
-        source={{
-          uri: item?.image_urls?.square_medium,
-          headers: { Referer: Pixiv.REFERER },
-          priority: FastImage.priority.normal,
-        }}
-        resizeMode={FastImage.resizeMode.cover}
-      />
-    </View>
-  )
-}

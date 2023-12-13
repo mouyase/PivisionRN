@@ -14,7 +14,7 @@ const AccountUtil = () => {
     return `https://app-api.pixiv.net/web/v1/login?code_challenge=${code_challenge}&code_challenge_method=S256&client=pixiv-android`
   }
   const doAuth = async (code: string) => {
-    return await PixivUtils.auth(code_verifier, code).then(value => {
+    return await PixivUtils.auth(code_verifier, code).then((value) => {
       setToken({ ...value })
       return value
     })
@@ -23,7 +23,7 @@ const AccountUtil = () => {
 }
 
 const doAuthWithToken = async (refresh_token: string) => {
-  return await PixivUtils.refresh(refresh_token).then(value => {
+  return await PixivUtils.refresh(refresh_token).then((value) => {
     setToken({ ...value })
     return value
   })
@@ -33,7 +33,7 @@ const getToken = async (): Promise<{
   access_token: string
   refresh_token: string
 }> => {
-  return await Keychain.getGenericPassword().then(value => {
+  return await Keychain.getGenericPassword().then((value) => {
     if (value) {
       return JSON.parse(value.password)
     } else {

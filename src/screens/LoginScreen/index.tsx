@@ -13,12 +13,12 @@ const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
     (code: string) => {
       setIsLoading(true)
       Account.doAuth(code)
-        .then(value => {
+        .then((value) => {
           ToastAndroid.show('登陆成功 ' + value.user.name, ToastAndroid.LONG)
           setIsLoading(false)
           navigation.navigate('Home')
         })
-        .catch(reason => {
+        .catch((reason) => {
           console.log(reason)
         })
     },

@@ -2,7 +2,6 @@ import { View } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import Account from '@/utils/Account'
 import { useEffect } from 'react'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack/src/types'
 
 const checkLogin = async () => {
   try {
@@ -18,10 +17,10 @@ const Splash = ({ route, navigation }: NativeStackScreenProps<any>) => {
   useEffect(() => {
     checkLogin()
       .then(() => {
-        navigation.navigate('Home')
+        navigation.replace('Home')
       })
       .catch(() => {
-        navigation.navigate('Login')
+        navigation.replace('Login')
       })
   }, [navigation])
 

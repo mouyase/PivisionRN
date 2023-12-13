@@ -17,7 +17,7 @@ const LoginWebViewScreen = ({
       <WebView
         source={{ uri: url }}
         style={{ flex: 1 }}
-        onLoad={syntheticEvent => {
+        onLoad={(syntheticEvent) => {
           const { nativeEvent } = syntheticEvent
           if (nativeEvent.url.includes(LOGIN_URL)) {
             const { code } = qs.parse(nativeEvent.url.replace(LOGIN_URL, ''))

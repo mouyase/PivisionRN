@@ -47,7 +47,7 @@ const ListItemFastImageView = ({
           headers: { Referer: Pixiv.REFERER },
           priority: FastImage.priority.normal,
         }}
-        resizeMode={FastImage.resizeMode.cover}
+        resizeMode={FastImage.resizeMode.stretch}
       />
       <Animated.View
         style={{
