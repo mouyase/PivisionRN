@@ -11,29 +11,29 @@ import FastImage from 'react-native-fast-image'
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import api from '@/api'
 import Pixiv from '@/values/Pixiv'
+import AnimatedFastImage from '@/components/AnimatedFastImage'
+import { useRequest } from 'ahooks'
 
 const BackgroundView = () => {
   const [imageUrlList, setImageUrlList] = useState<string[][]>(
     new Array(10).fill(new Array(10)),
   )
 
-  useEffect(() => {
-    api
-      .getWalkthrough()
-      .then((value) => {
-        const array = value.illusts.map((item) => item.image_urls.square_medium)
-        let index = 0
-        let newArray = []
-        while (index < array.length) {
-          newArray.push(array.slice(index, (index += 10)))
-        }
-        setImageUrlList(newArray)
-        console.log('加载到数据')
-      })
-      .catch((reason) => {
-        console.error(reason)
-      })
-  }, [])
+  useRequest(() => api.getWalkthrough(), {
+    onSuccess: (data, params) => {
+      const array = data.illusts.map((item) => item.image_urls.square_medium)
+      let index = 0
+      let newArray = []
+      while (index < array.length) {
+        newArray.push(array.slice(index, (index += 10)))
+      }
+      setImageUrlList(newArray)
+      console.log('加载到数据')
+    },
+    onError: (e, params) => {
+      console.error(e)
+    },
+  })
 
   const { width: screenWidth, height: screenHeight } = useWindowDimensions()
   const translate = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current
@@ -106,36 +106,12 @@ const BackgroundView = () => {
 }
 const ListItem: FC<{ url: string }> = ({ url }) => {
   const { width: screenWidth } = useWindowDimensions()
-  const fade = useRef(new Animated.Value(0)).current
 
-  const onLoad = () => {
-    Animated.timing(fade, {
-      toValue: 1,
-      duration: 500,
-      delay: 10,
-      useNativeDriver: true,
-    }).start()
-  }
   return (
-    <View style={{ width: screenWidth / 2, height: screenWidth / 2 }}>
-      {url && (
-        <Animated.View style={{ opacity: fade, flex: 1 }}>
-          <FastImage
-            onLoad={onLoad}
-            style={{
-              flex: 1,
-            }}
-            source={{
-              uri: url,
-              headers: { Referer: Pixiv.REFERER },
-              priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.cover}
-            key={url}
-          />
-        </Animated.View>
-      )}
-    </View>
+    <AnimatedFastImage
+      style={{ width: screenWidth / 2, height: screenWidth / 2 }}
+      url={url}
+    />
   )
 }
 export default BackgroundView
