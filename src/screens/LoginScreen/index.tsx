@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useCallback, useState } from 'react'
-import { TextComponent, ToastAndroid, View } from 'react-native'
+import { ToastAndroid, View } from 'react-native'
 import Account from '@/utils/Account'
 import BackgroundView from '@/screens/LoginScreen/components/BackgroundView'
 import { ActivityIndicator, Button, Dialog, Portal } from 'react-native-paper'

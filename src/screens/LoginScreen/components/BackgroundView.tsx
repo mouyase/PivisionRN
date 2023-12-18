@@ -1,18 +1,21 @@
 import {
-  Animated,
-  Easing,
   FlatList,
   ListRenderItem,
   StyleSheet,
   useWindowDimensions,
   View,
 } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import api from '@/api'
-import Pixiv from '@/values/Pixiv'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
 import { useRequest } from 'ahooks'
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+} from 'react-native-reanimated'
 
 const BackgroundView = () => {
   const [imageUrlList, setImageUrlList] = useState<string[][]>(
@@ -20,7 +23,7 @@ const BackgroundView = () => {
   )
 
   useRequest(() => api.getWalkthrough(), {
-    onSuccess: (data, params) => {
+    onSuccess: (data) => {
       const array = data.illusts.map((item) => item.image_urls.square_medium)
       let index = 0
       let newArray = []
@@ -30,52 +33,53 @@ const BackgroundView = () => {
       setImageUrlList(newArray)
       console.log('加载到数据')
     },
-    onError: (e, params) => {
+    onError: (e) => {
       console.error(e)
     },
   })
 
   const { width: screenWidth, height: screenHeight } = useWindowDimensions()
-  const translate = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current
+  const translate = useSharedValue({ x: 0, y: 0 })
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { translateX: translate.value.x },
+        { translateY: translate.value.y },
+      ],
+    }
+  })
 
   const doTranslate = useCallback(() => {
-    return Animated.loop(
-      Animated.sequence([
-        Animated.timing(translate, {
-          toValue: {
-            x: -screenWidth * 4,
-            y: -screenWidth * 4 + screenHeight,
-          },
-          duration: 1000 * 60 * 2,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-        Animated.timing(translate, {
-          toValue: { x: 0, y: 0 },
-          duration: 1000 * 60 * 2,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-      ]),
+    translate.value = withRepeat(
+      withTiming(
+        { x: -screenWidth * 4, y: -screenWidth * 4 + screenHeight },
+        { duration: 1000 * 60 * 2, easing: Easing.linear },
+      ),
+      -1,
+      true,
     )
   }, [screenHeight, screenWidth, translate])
 
   useEffect(() => {
-    doTranslate().start()
+    doTranslate()
   }, [doTranslate])
+
   const renderItem: ListRenderItem<string> = ({ item }) => {
     return <ListItem url={item} />
   }
   return (
     <>
       <Animated.View
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          width: screenWidth * 5,
-          height: screenWidth * 5,
-          flexDirection: 'row',
-          transform: [{ translateX: translate.x }, { translateY: translate.y }],
-        }}>
+        style={[
+          {
+            ...StyleSheet.absoluteFillObject,
+            width: screenWidth * 5,
+            height: screenWidth * 5,
+            flexDirection: 'row',
+          },
+          animatedStyle,
+        ]}>
         {imageUrlList.map((item, index) => (
           <View
             style={{

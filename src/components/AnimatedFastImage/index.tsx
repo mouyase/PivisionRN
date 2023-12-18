@@ -1,7 +1,7 @@
-import { Animated, View, ViewProps } from 'react-native'
+import { View, ViewProps } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import Pixiv from '@/values/Pixiv'
-import {
+import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
