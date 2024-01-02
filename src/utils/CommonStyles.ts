@@ -90,6 +90,9 @@ export const RB = (value: number) => {
 export const BGC = (value: ColorValue) => {
   return StyleSheet.create({ style: { backgroundColor: value } }).style
 }
+export const OPT = (value: number) => {
+  return StyleSheet.create({ style: { opacity: value } }).style
+}
 export const BW = (value: number) => {
   return StyleSheet.create({ style: { borderWidth: value } }).style
 }

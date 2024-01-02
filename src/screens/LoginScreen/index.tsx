@@ -41,19 +41,19 @@ const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
     <>
       <View style={[F, CENTER, PT(insets.top)]}>
         <BackgroundView />
-        <Portal>
-          <Dialog visible={isLoading} dismissable={false}>
-            <Dialog.Content>
-              <View style={[ROW, AC]}>
-                <ActivityIndicator size={'large'} style={[MR(16)]} />
-                <Text variant={'bodyLarge'}>Loading</Text>
-              </View>
-            </Dialog.Content>
-          </Dialog>
-        </Portal>
-        <Button mode='contained' onPress={login}>
-          Login
-        </Button>
+        {/*<Portal>*/}
+        {/*  <Dialog visible={isLoading} dismissable={false}>*/}
+        {/*    <Dialog.Content>*/}
+        {/*      <View style={[ROW, AC]}>*/}
+        {/*        <ActivityIndicator size={'large'} style={[MR(16)]} />*/}
+        {/*        <Text variant={'bodyLarge'}>Loading</Text>*/}
+        {/*      </View>*/}
+        {/*    </Dialog.Content>*/}
+        {/*  </Dialog>*/}
+        {/*</Portal>*/}
+        {/*<Button mode='contained' onPress={login}>*/}
+        {/*  Login*/}
+        {/*</Button>*/}
       </View>
     </>
   )

@@ -1,21 +1,29 @@
 import {
+  Dimensions,
+  Easing,
   FlatList,
   ListRenderItem,
-  useWindowDimensions,
+  TouchableOpacity,
   View,
 } from 'react-native'
-import { memo, useCallback, useEffect, useState } from 'react'
+import { FC, memo, useCallback, useEffect, useRef, useState } from 'react'
 import api from '@/api'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
 import { useRequest } from 'ahooks'
+import { ABSOLUTE, BGC, F, H, OPT, ROW, W, WH } from '@/utils/CommonStyles'
 import Animated, {
-  Easing,
+  ReduceMotion,
+  runOnJS,
+  runOnUI,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
   withTiming,
 } from 'react-native-reanimated'
-import { ABSOLUTE, BGC, ROW, WH } from '@/utils/CommonStyles'
+import { Text } from 'react-native-paper'
+
+const screenWidth = Dimensions.get('window').width
+const screenHeight = Dimensions.get('window').height
 
 const BackgroundView = () => {
   const [imageUrlList, setImageUrlList] = useState<string[][]>(
@@ -31,13 +39,13 @@ const BackgroundView = () => {
         newArray.push(array.slice(index, (index += 10)))
       }
       setImageUrlList(newArray)
+      console.log('加载到数据')
     },
     onError: (e) => {
       console.error(e)
     },
   })
 
-  const { width: screenWidth, height: screenHeight } = useWindowDimensions()
   const translate = useSharedValue({ x: 0, y: 0 })
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -49,58 +57,34 @@ const BackgroundView = () => {
     }
   })
 
-  const doTranslate = useCallback(() => {
-    translate.value = withRepeat(
-      withTiming(
-        { x: -screenWidth * 4, y: -screenWidth * 4 + screenHeight },
-        { duration: 1000 * 60 * 2, easing: Easing.linear },
-      ),
-      -1,
-      true,
-    )
-  }, [screenHeight, screenWidth, translate])
-
   useEffect(() => {
-    doTranslate()
-  }, [doTranslate])
+    const x = -screenWidth * 4
+    const y = x + screenHeight
+    const duration = 60000
+    translate.value = withRepeat(withTiming({ x, y }, { duration }), -1, true)
+  }, [translate])
 
-  const renderItem: ListRenderItem<string> = ({ item }) => {
-    return <ListItem url={item} />
-  }
   return (
     <>
       <Animated.View
-        style={[ABSOLUTE, ROW, WH(screenWidth * 5), animatedStyle]}>
+        style={[ABSOLUTE, WH(screenWidth * 5), ROW, animatedStyle]}>
         {imageUrlList.map((item, index) => (
-          <View
-            style={{
-              width: screenWidth / 2,
-              height: screenWidth * 5,
-            }}
-            key={index}>
+          <View style={[W(screenWidth / 2), H(screenWidth * 5)]} key={index}>
             <FlatList
               scrollEnabled={false}
               data={item}
-              style={{ flex: 1 }}
+              style={[F]}
               renderItem={renderItem}
             />
           </View>
         ))}
       </Animated.View>
-      <View
-        style={[
-          ABSOLUTE,
-          BGC('#000'),
-          {
-            opacity: 0.6,
-          },
-        ]}
-      />
+      <View style={[ABSOLUTE, BGC('#000'), OPT(0.6)]} />
     </>
   )
 }
-const ListItem = memo(({ url }: { url: string }) => {
-  const { width: screenWidth } = useWindowDimensions()
-  return <AnimatedFastImage style={[WH(screenWidth * 5)]} url={url} />
-})
+
+const renderItem: ListRenderItem<string> = ({ item }) => {
+  return <AnimatedFastImage style={[WH(screenWidth / 2)]} url={item} />
+}
 export default BackgroundView
