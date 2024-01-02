@@ -1,14 +1,41 @@
-import { Animated, StyleSheet, View } from 'react-native'
+import { ColorValue, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import Pixiv from '@/values/Pixiv'
 import ListUtils from '@/utils/ListUtils'
-import { useRef } from 'react'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'
+import { ABSOLUTE, BGC } from '@/utils/CommonStyles'
+import { memo } from 'react'
+
+const RandomColorList: ColorValue[] = [
+  '#edcace',
+  '#efd2ca',
+  '#eacfb2',
+  '#e3e9bd',
+  '#bee8ba',
+  '#bce9e6',
+  '#b9ceeb',
+  '#bfbee8',
+  '#d4c4e9',
+  '#d4c4eb',
+  '#e6bed9',
+]
+
+const getRandomColor = (): ColorValue => {
+  function getRandomInt(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+  return RandomColorList[getRandomInt(0, RandomColorList.length)]
+}
 
 const ListItemFastImageView = ({
   item,
   numColumns,
 }: {
-  item: illust
+  item: Illust
   numColumns: number
 }) => {
   const url = item.image_urls.medium
@@ -19,22 +46,22 @@ const ListItemFastImageView = ({
     numColumns,
   })
 
-  const fade = useRef(new Animated.Value(1)).current
+  const fade = useSharedValue(1)
 
   const onLoadStart = () => {
     if (!Model.isLoadFinishMap.get(url)) {
-      fade.setValue(1)
+      fade.value = 1
     }
   }
 
   const onLoad = () => {
     Model.isLoadFinishMap.set(url, true)
-    Animated.timing(fade, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: true,
-    }).start()
+    fade.value = withTiming(0, { duration: 300 })
   }
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return { opacity: fade.value }
+  })
 
   return (
     <View style={{ width, height }}>
@@ -49,19 +76,11 @@ const ListItemFastImageView = ({
         }}
         resizeMode={FastImage.resizeMode.stretch}
       />
-      <Animated.View
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          width: '100%',
-          height: '100%',
-          opacity: fade,
-          backgroundColor: '#eee',
-        }}
-      />
+      <Animated.View style={[animatedStyle, ABSOLUTE, BGC(getRandomColor())]} />
     </View>
   )
 }
-export default ListItemFastImageView
+export default memo(ListItemFastImageView)
 
 class ModelClass {
   private constructor() {}

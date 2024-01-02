@@ -10,6 +10,11 @@ const Stack = createNativeStackNavigator()
 const AppStackRouter = () => {
   return (
     <>
+      <StatusBar
+        backgroundColor={'transparent'}
+        barStyle={'dark-content'}
+        translucent={true}
+      />
       <Stack.Navigator initialRouteName='Splash'>
         <Stack.Screen
           name='Splash'
@@ -23,10 +28,13 @@ const AppStackRouter = () => {
           component={LoginScreen}
           options={{
             headerShown: false,
-            // headerTransparent: true,
           }}
         />
-        <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name='LoginWebView' component={LoginWebViewScreen} />
       </Stack.Navigator>
     </>

@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native'
 
+const screenWidth = Dimensions.get('window').width
 const getListItemWH = ({
   width,
   height,
@@ -9,7 +10,6 @@ const getListItemWH = ({
   height: number
   numColumns?: number
 }) => {
-  const screenWidth = Dimensions.get('window').width
   return {
     width: screenWidth / numColumns,
     height: (screenWidth / numColumns / width) * height,

@@ -1,17 +1,17 @@
-declare type illustType = 'illust'
-declare type imageUrls = {
+declare type IllustType = 'illust'
+declare type ImageUrls = {
   square_medium: string
   medium: string
   large: string
 }
-declare type illust = {
+declare type Illust = {
   caption: string
   create_date: string
   height: number
   id: number
   illust_ai_type: number
   illust_book_style: number
-  image_urls: imageUrls
+  image_urls: ImageUrls
   is_bookmarked: boolean
   is_muted: boolean
   meta_pages: Array
@@ -25,20 +25,20 @@ declare type illust = {
   tools: Array
   total_bookmarks: number
   total_view: number
-  type: illustType
+  type: IllustType
   user: Object
   visible: boolean
   width: number
   x_restrict: number
 }
 
-declare type illustsResponseType = {
-  illusts: illust[]
+declare type IllustsRes = {
+  illusts: Illust[]
   next_url: string
 }
 
-declare type recommendedResponseType = {
-  illusts: illust[]
-  ranking_illusts: illust[]
+declare type RecommendedRes = {
+  illusts: Illust[]
+  ranking_illusts: Illust[]
   next_url: string
 }

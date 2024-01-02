@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 import api from '@/api'
 import { MasonryFlashList } from '@shopify/flash-list'
-import { Dimensions, useWindowDimensions, View } from 'react-native'
-import { ListRenderItem } from '@shopify/flash-list/src/FlashListProps'
-import FastImage from 'react-native-fast-image'
-import Pixiv from '@/values/Pixiv'
-import { log } from '@/utils/LogUtils'
+import { useWindowDimensions, View } from 'react-native'
 import ListUtils from '@/utils/ListUtils'
 import ListItemFastImageView from '@/screens/HomeScreen/components/ListItemFastImageView'
 
 const RecommendedView = () => {
-  const [illustList, setIllustList] = useState<illust[]>([])
+  const [illustList, setIllustList] = useState<Illust[]>([])
   const [nextUrl, setNextUrl] = useState<string>()
 
   useEffect(() => {
@@ -31,7 +27,7 @@ const RecommendedView = () => {
   const onEndReached = () => {
     console.log('触底反弹', nextUrl)
     if (nextUrl) {
-      api.getNext(nextUrl).then((value: recommendedResponseType) => {
+      api.getNext(nextUrl).then((value: RecommendedRes) => {
         setIllustList((list) => list.concat(value.illusts))
       })
     }
@@ -46,8 +42,9 @@ const RecommendedView = () => {
         data={illustList}
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
-        estimatedItemSize={height / 2}
+        estimatedItemSize={height / 5}
         showsVerticalScrollIndicator={false}
+        optimizeItemArrangement={true}
         overrideItemLayout={(layout, item) => {
           layout.size = ListUtils.getListItemWH({
             width: item.width,

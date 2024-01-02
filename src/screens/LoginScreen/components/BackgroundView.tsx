@@ -1,11 +1,10 @@
 import {
   FlatList,
   ListRenderItem,
-  StyleSheet,
   useWindowDimensions,
   View,
 } from 'react-native'
-import { FC, useCallback, useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import api from '@/api'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
 import { useRequest } from 'ahooks'
@@ -16,6 +15,7 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated'
+import { ABSOLUTE, BGC, ROW, WH } from '@/utils/CommonStyles'
 
 const BackgroundView = () => {
   const [imageUrlList, setImageUrlList] = useState<string[][]>(
@@ -31,7 +31,6 @@ const BackgroundView = () => {
         newArray.push(array.slice(index, (index += 10)))
       }
       setImageUrlList(newArray)
-      console.log('加载到数据')
     },
     onError: (e) => {
       console.error(e)
@@ -71,15 +70,7 @@ const BackgroundView = () => {
   return (
     <>
       <Animated.View
-        style={[
-          {
-            ...StyleSheet.absoluteFillObject,
-            width: screenWidth * 5,
-            height: screenWidth * 5,
-            flexDirection: 'row',
-          },
-          animatedStyle,
-        ]}>
+        style={[ABSOLUTE, ROW, WH(screenWidth * 5), animatedStyle]}>
         {imageUrlList.map((item, index) => (
           <View
             style={{
@@ -97,25 +88,19 @@ const BackgroundView = () => {
         ))}
       </Animated.View>
       <View
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          opacity: 0.5,
-          backgroundColor: 'black',
-          width: screenWidth,
-          height: screenHeight,
-        }}
+        style={[
+          ABSOLUTE,
+          BGC('#000'),
+          {
+            opacity: 0.6,
+          },
+        ]}
       />
     </>
   )
 }
-const ListItem: FC<{ url: string }> = ({ url }) => {
+const ListItem = memo(({ url }: { url: string }) => {
   const { width: screenWidth } = useWindowDimensions()
-
-  return (
-    <AnimatedFastImage
-      style={{ width: screenWidth / 2, height: screenWidth / 2 }}
-      url={url}
-    />
-  )
-}
+  return <AnimatedFastImage style={[WH(screenWidth * 5)]} url={url} />
+})
 export default BackgroundView

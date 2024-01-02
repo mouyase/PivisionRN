@@ -44,7 +44,7 @@ class FetchClass {
         '\n\x1b[33m' +
         'headers: ' +
         JSON.stringify(headers) +
-        '\n\x1b[34m' +
+        '\n\x1b[36m' +
         'body: ' +
         JSON.stringify(originParams),
     )
@@ -70,7 +70,7 @@ class FetchClass {
         '\n\x1b[33m' +
         'headers: ' +
         JSON.stringify(headers) +
-        '\n\x1b[34m' +
+        '\n\x1b[36m' +
         'body: ' +
         JSON.stringify(body),
     )

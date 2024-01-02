@@ -4,11 +4,11 @@ import { error } from '@/utils/LogUtils'
 
 const regExpGetAPIAndParams = /https:\/\/app-api.pixiv.net(.+)\?(.+)/
 
-const getWalkthrough = async (): Promise<illustsResponseType> => {
+const getWalkthrough = async (): Promise<IllustsRes> => {
   return await Fetch.get('/v1/walkthrough/illusts')
 }
 
-const getRecommended = async (): Promise<recommendedResponseType> => {
+const getRecommended = async (): Promise<RecommendedRes> => {
   return await Fetch.get('/v1/illust/recommended', {
     filter: 'for_android',
     include_ranking_illusts: true,

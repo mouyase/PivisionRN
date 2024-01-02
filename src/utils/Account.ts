@@ -37,7 +37,7 @@ const getToken = async (): Promise<{
     if (value) {
       return JSON.parse(value.password)
     } else {
-      return Promise.reject('Account.getToken 用户未保存凭据')
+      return Promise.reject('Account.getToken.error 用户未保存凭据')
     }
   })
 }
@@ -54,6 +54,12 @@ const setToken = ({
     'Pixiv',
     JSON.stringify({ access_token, refresh_token }),
   )
+    .then((b) => {
+      console.log('设置秘钥', b)
+    })
+    .catch((reason) => {
+      console.error(reason, '设置秘钥错误')
+    })
 }
 
 const { createLoginUrl, doAuth } = AccountUtil()

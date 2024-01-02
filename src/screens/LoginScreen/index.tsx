@@ -1,10 +1,12 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { ToastAndroid, View } from 'react-native'
 import Account from '@/utils/Account'
 import BackgroundView from '@/screens/LoginScreen/components/BackgroundView'
 import { ActivityIndicator, Button, Dialog, Portal } from 'react-native-paper'
 import { Text } from 'react-native-paper'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { AC, CENTER, F, MR, PT, ROW } from '@/utils/CommonStyles'
 
 const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -33,15 +35,17 @@ const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
     })
   }, [navigation, onBack])
 
+  const insets = useSafeAreaInsets()
+
   return (
     <>
-      <View style={{ flex: 1, justifyContent: 'center' }}>
+      <View style={[F, CENTER, PT(insets.top)]}>
         <BackgroundView />
         <Portal>
           <Dialog visible={isLoading} dismissable={false}>
             <Dialog.Content>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <ActivityIndicator size={'large'} style={{ marginRight: 16 }} />
+              <View style={[ROW, AC]}>
+                <ActivityIndicator size={'large'} style={[MR(16)]} />
                 <Text variant={'bodyLarge'}>Loading</Text>
               </View>
             </Dialog.Content>
@@ -54,4 +58,4 @@ const LoginScreen = ({ route, navigation }: NativeStackScreenProps<any>) => {
     </>
   )
 }
-export default LoginScreen
+export default memo(LoginScreen)
