@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android --active-arch-only",
     "build:android": "react-native --verbose build-android --no-packager --tasks assembleRelease",
+    "build:android:slim": "react-native --verbose build-android --no-packager --tasks assembleRelease --extra-params -PreactNativeArchitectures=arm64-v8a",
     "ios": "react-native run-ios",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
     "start": "react-native start",
