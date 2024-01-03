@@ -2,6 +2,7 @@ import { View, ViewProps } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import Pixiv from '@/values/Pixiv'
 import Animated, {
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -16,7 +17,7 @@ const AnimatedFastImage = (props: AnimatedFastImageProps) => {
   const fade = useSharedValue(0)
 
   const onLoad = () => {
-    fade.value = withTiming(1, { duration: 300 })
+    fade.value = withTiming(1, { duration: 300, easing: Easing.linear })
   }
 
   const animatedStyle = useAnimatedStyle(() => {

@@ -1,22 +1,13 @@
-import {
-  Dimensions,
-  Easing,
-  FlatList,
-  ListRenderItem,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Dimensions, FlatList, ListRenderItem, View } from 'react-native'
 import { FC, memo, useCallback, useEffect, useRef, useState } from 'react'
 import api from '@/api'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
 import { useRequest } from 'ahooks'
 import { ABSOLUTE, BGC, F, H, OPT, ROW, W, WH } from '@/utils/CommonStyles'
 import Animated, {
-  ReduceMotion,
-  runOnJS,
-  runOnUI,
   useAnimatedStyle,
   useSharedValue,
+  Easing,
   withRepeat,
   withTiming,
 } from 'react-native-reanimated'
@@ -61,7 +52,11 @@ const BackgroundView = () => {
     const x = -screenWidth * 4
     const y = x + screenHeight
     const duration = 60000
-    translate.value = withRepeat(withTiming({ x, y }, { duration }), -1, true)
+    translate.value = withRepeat(
+      withTiming({ x, y }, { duration, easing: Easing.linear }),
+      -1,
+      true,
+    )
   }, [translate])
 
   return (
