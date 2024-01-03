@@ -4,6 +4,7 @@ import HomeScreen from '@/screens/HomeScreen'
 import LoginWebViewScreen from '@/screens/LoginWebViewScreen'
 import Splash from 'src/screens/SplashScreen'
 import { StatusBar } from 'react-native'
+import IllustDetailScreen from '@/screens/IllustDetailScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -33,6 +34,11 @@ const AppStackRouter = () => {
         <Stack.Screen
           name='Home'
           component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='IllustDetail'
+          component={IllustDetailScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen name='LoginWebView' component={LoginWebViewScreen} />

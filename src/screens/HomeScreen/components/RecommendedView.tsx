@@ -4,8 +4,10 @@ import { MasonryFlashList } from '@shopify/flash-list'
 import { useWindowDimensions, View } from 'react-native'
 import ListUtils from '@/utils/ListUtils'
 import ListItemFastImageView from '@/screens/HomeScreen/components/ListItemFastImageView'
+import useNavigation from '@/hooks/useNavigation'
 
 const RecommendedView = () => {
+  const navigation = useNavigation()
   const [illustList, setIllustList] = useState<Illust[]>([])
   const [nextUrl, setNextUrl] = useState<string>()
 
@@ -32,11 +34,19 @@ const RecommendedView = () => {
       })
     }
   }
+  const onItemPress = (index: number) => {
+    navigation.navigate('IllustDetail', { illusts: illustList, index })
+  }
+
   return (
     <View style={{ flex: 1, backgroundColor: '#eee' }}>
       <MasonryFlashList
-        renderItem={({ item }) => (
-          <ListItemFastImageView item={item} numColumns={numColumns} />
+        renderItem={({ item, index }) => (
+          <ListItemFastImageView
+            item={item}
+            numColumns={numColumns}
+            onItemPress={() => onItemPress(index)}
+          />
         )}
         numColumns={numColumns}
         data={illustList}

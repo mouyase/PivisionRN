@@ -9,6 +9,8 @@ import Animated, {
 } from 'react-native-reanimated'
 import { ABSOLUTE, BGC } from '@/utils/CommonStyles'
 import { memo } from 'react'
+import TouchView from '@/components/TouchView'
+import useNavigation from '@/hooks/useNavigation'
 
 const RandomColorList: ColorValue[] = [
   '#edcace',
@@ -31,13 +33,13 @@ const getRandomColor = (): ColorValue => {
   return RandomColorList[getRandomInt(0, RandomColorList.length)]
 }
 
-const ListItemFastImageView = ({
-  item,
-  numColumns,
-}: {
+type ListItemFastImageViewProps = {
   item: Illust
   numColumns: number
-}) => {
+  onItemPress?: () => void
+}
+const ListItemFastImageView = (props: ListItemFastImageViewProps) => {
+  const { item, numColumns, onItemPress = () => {} } = props
   const url = item.image_urls.medium
 
   const { width, height } = ListUtils.getListItemWH({
@@ -63,21 +65,29 @@ const ListItemFastImageView = ({
     return { opacity: fade.value }
   })
 
+  const onPress = () => {
+    onItemPress()
+  }
+
   return (
-    <View style={{ width, height }}>
-      <FastImage
-        onLoadStart={onLoadStart}
-        onLoad={onLoad}
-        style={{ flex: 1 }}
-        source={{
-          uri: url,
-          headers: { Referer: Pixiv.REFERER },
-          priority: FastImage.priority.normal,
-        }}
-        resizeMode={FastImage.resizeMode.stretch}
-      />
-      <Animated.View style={[animatedStyle, ABSOLUTE, BGC(getRandomColor())]} />
-    </View>
+    <TouchView onPress={onPress}>
+      <View style={{ width, height }}>
+        <FastImage
+          onLoadStart={onLoadStart}
+          onLoad={onLoad}
+          style={{ flex: 1 }}
+          source={{
+            uri: url,
+            headers: { Referer: Pixiv.REFERER },
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.stretch}
+        />
+        <Animated.View
+          style={[animatedStyle, ABSOLUTE, BGC(getRandomColor())]}
+        />
+      </View>
+    </TouchView>
   )
 }
 export default memo(ListItemFastImageView)

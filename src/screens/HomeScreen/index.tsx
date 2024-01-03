@@ -8,10 +8,7 @@ const HomeScreen = () => {
   const insets = useSafeAreaInsets()
   return (
     <View style={[F, PT(insets.top)]}>
-      <TabsProvider
-        defaultIndex={0}
-        // onChangeIndex={handleChangeIndex} optional
-      >
+      <TabsProvider defaultIndex={0}>
         <Tabs>
           <TabScreen label='推荐'>
             <RecommendedView />
