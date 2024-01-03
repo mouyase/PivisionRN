@@ -1,4 +1,4 @@
-package com.pivisionrn;
+package tech.yojigen.pivision.rn;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,9 +9,12 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
+import com.facebook.react.modules.network.OkHttpClientProvider;
 import com.facebook.soloader.SoLoader;
 
 import java.util.List;
+
+import tech.yojigen.fuckgfw.CustomClientFactory;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -61,6 +64,7 @@ public class MainApplication extends Application implements ReactApplication {
             DefaultNewArchitectureEntryPoint.load();
         }
         ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+        OkHttpClientProvider.setOkHttpClientFactory(new CustomClientFactory());
     }
 
     @Override

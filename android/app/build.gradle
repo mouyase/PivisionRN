@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 /**
@@ -74,19 +76,25 @@ def reactNativeArchitectures() {
 
 def APP_NAME = 'PivisionRN'
 
+def NOW_TIME = new Date()
+
 def baseVersion = "0.0.1"
-def buildTime = (new Date().getTime() / 1000).toInteger()
+def buildTime = (NOW_TIME.getTime() / 1000).toInteger()
 def buildVersion = baseVersion
-def buildVersionWithTime = baseVersion + "(" + buildTime + ")"
+def buildVersionWithTime = baseVersion + "(" + releaseTime(NOW_TIME) + ")"
+
+println('App名称: ' + APP_NAME)
+println('打包版本: ' + buildVersion)
+println('打包时间: ' + releaseTime(NOW_TIME))
 
 android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.pivisionrn"
+    namespace "tech.yojigen.pivision.rn"
     defaultConfig {
-        applicationId "com.pivisionrn"
+        applicationId "tech.yojigen.pivision.rn"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode buildTime
@@ -126,6 +134,11 @@ dependencies {
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.squareup.okhttp3', module:'okhttp'
     }
+
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
     if (hermesEnabled.toBoolean()) {

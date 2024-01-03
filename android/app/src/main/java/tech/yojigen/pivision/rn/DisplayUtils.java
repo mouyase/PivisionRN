@@ -1,4 +1,4 @@
-package com.pivisionrn;
+package tech.yojigen.pivision.rn;
 
 import android.app.Activity;
 import android.content.Context;

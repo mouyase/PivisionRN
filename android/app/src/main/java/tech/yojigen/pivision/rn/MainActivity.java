@@ -1,4 +1,4 @@
-package com.pivisionrn;
+package tech.yojigen.pivision.rn;
 
 import android.graphics.Color;
 import android.os.Bundle;

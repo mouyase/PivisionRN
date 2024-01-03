@@ -37,7 +37,7 @@ class FetchClass {
     const params = qs.stringify(originParams)
     console.info(
       '\x1b[32m' +
-        '[Fetch]' +
+        '[Fetch - Get]' +
         '\n\x1b[34m' +
         'url: ' +
         url +
@@ -63,7 +63,7 @@ class FetchClass {
     const body = qs.stringify(originBody)
     console.info(
       '\x1b[32m' +
-        '[Fetch]' +
+        '[Fetch - Post]' +
         '\n\x1b[34m' +
         'url: ' +
         url +
