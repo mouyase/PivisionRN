@@ -54,9 +54,7 @@ const setToken = ({
     'Pixiv',
     JSON.stringify({ access_token, refresh_token }),
   )
-    .then((b) => {
-      console.log('设置秘钥', b)
-    })
+    .then(() => {})
     .catch((reason) => {
       console.error(reason, '设置秘钥错误')
     })

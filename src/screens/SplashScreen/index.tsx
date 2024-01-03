@@ -1,7 +1,7 @@
 import { View } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import Account from '@/utils/Account'
 import { useEffect } from 'react'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 const checkLogin = async () => {
   try {

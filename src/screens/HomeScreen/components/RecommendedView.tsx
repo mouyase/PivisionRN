@@ -3,7 +3,7 @@ import api from '@/api'
 import { MasonryFlashList } from '@shopify/flash-list'
 import { useWindowDimensions, View } from 'react-native'
 import ListUtils from '@/utils/ListUtils'
-import ListItemFastImageView from '@/screens/HomeScreen/components/ListItemFastImageView'
+import ListItemFastImageView from '@/screens/HomeScreen/components/IllustListItem'
 import useNavigation from '@/hooks/useNavigation'
 
 const RecommendedView = () => {
@@ -35,7 +35,7 @@ const RecommendedView = () => {
     }
   }
   const onItemPress = (index: number) => {
-    navigation.navigate('IllustDetail', { illusts: illustList, index })
+    navigation.push('IllustDetail', { illusts: illustList, index })
   }
 
   return (

@@ -37,15 +37,13 @@ class FetchClass {
     const params = qs.stringify(originParams)
     console.info(
       '\x1b[32m' +
-        '[Fetch - Get]' +
-        '\n\x1b[34m' +
-        'url: ' +
+        '[Fetch - Get] ' +
         url +
         '\n\x1b[33m' +
         'headers: ' +
         JSON.stringify(headers) +
         '\n\x1b[36m' +
-        'body: ' +
+        'params: ' +
         JSON.stringify(originParams),
     )
     return fetch(Fetch.host + url + '?' + params, {
@@ -63,9 +61,7 @@ class FetchClass {
     const body = qs.stringify(originBody)
     console.info(
       '\x1b[32m' +
-        '[Fetch - Post]' +
-        '\n\x1b[34m' +
-        'url: ' +
+        '[Fetch - Post] ' +
         url +
         '\n\x1b[33m' +
         'headers: ' +

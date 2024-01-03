@@ -1,9 +1,8 @@
 import { View } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { F } from '@/utils/CommonStyles'
+import { BGC, F, H100, W100 } from '@/utils/CommonStyles'
 import PagerView from 'react-native-pager-view'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
-import FastImage from 'react-native-fast-image'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 const IllustDetailScreen = ({
   route,
@@ -14,15 +13,22 @@ const IllustDetailScreen = ({
     next?: string
     index: number
   }
+
   return (
     <View style={[F]}>
-      <PagerView style={[F]} initialPage={index} orientation={'vertical'}>
-        {illusts.map((value, i) => (
-          <FastImage
-            key={value.id}
-            style={[F]}
-            source={{ uri: illusts[i].image_urls.large }}
-          />
+      <PagerView
+        style={[F]}
+        initialPage={index}
+        orientation={'vertical'}
+        offscreenPageLimit={3}>
+        {illusts.map((value) => (
+          <View style={[W100, H100, BGC('#000')]} key={value.id}>
+            <AnimatedFastImage
+              style={[F]}
+              url={value.image_urls.large}
+              resizeMode={'contain'}
+            />
+          </View>
         ))}
       </PagerView>
     </View>

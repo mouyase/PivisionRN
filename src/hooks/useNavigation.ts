@@ -1,7 +1,7 @@
 import { useNavigation as useNavigationOrigin } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 const useNavigation = () => {
-  return useNavigationOrigin<StackNavigationProp<any>>()
+  return useNavigationOrigin<NativeStackNavigationProp<any>>()
 }
 export default useNavigation

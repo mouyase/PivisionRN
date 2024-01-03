@@ -1,10 +1,10 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import LoginScreen from '@/screens/LoginScreen'
 import HomeScreen from '@/screens/HomeScreen'
 import LoginWebViewScreen from '@/screens/LoginWebViewScreen'
 import Splash from 'src/screens/SplashScreen'
 import { StatusBar } from 'react-native'
 import IllustDetailScreen from '@/screens/IllustDetailScreen'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator()
 

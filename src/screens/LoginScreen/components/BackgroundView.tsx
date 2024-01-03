@@ -51,7 +51,7 @@ const BackgroundView = () => {
   useEffect(() => {
     const x = -screenWidth * 4
     const y = x + screenHeight
-    const duration = 60000
+    const duration = 180000
     translate.value = withRepeat(
       withTiming({ x, y }, { duration, easing: Easing.linear }),
       -1,
@@ -80,6 +80,14 @@ const BackgroundView = () => {
 }
 
 const renderItem: ListRenderItem<string> = ({ item }) => {
-  return <AnimatedFastImage style={[WH(screenWidth / 2)]} url={item} />
+  const size = screenWidth / 2
+  return (
+    <AnimatedFastImage
+      style={[WH(size)]}
+      url={item}
+      width={size}
+      height={size}
+    />
+  )
 }
 export default BackgroundView
