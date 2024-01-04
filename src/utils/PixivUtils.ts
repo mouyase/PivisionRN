@@ -103,10 +103,13 @@ const refresh = async (refresh_token: string): Promise<AuthResponseType> => {
   }).then((response) => response.json())
 }
 
+const getImageUrl = () => {}
+
 const PixivUtils = {
   auth,
   refresh,
   generateCodeVerifier,
   getHeader,
+  getImageUrl,
 }
 export default PixivUtils

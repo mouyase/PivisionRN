@@ -1,17 +1,11 @@
-import RNFS, { DownloadFileOptions } from 'react-native-fs'
 import { CameraRoll } from '@react-native-camera-roll/camera-roll'
+import CryptoJS from 'crypto-js'
 import Pixiv from '@/values/Pixiv'
+import RNFetchBlob from 'rn-fetch-blob'
 
 const getExtension = (url: string) => {
   const arr = url.split('.')
   return arr[arr.length - 1]
-}
-
-const getFileName = (url: string) => {
-  const file = url.split('/')
-  const fileName = file[file.length - 1]
-  const name = fileName.split('.')
-  return name[name.length - 2]
 }
 
 type DownloadOptions = {
@@ -21,19 +15,21 @@ type DownloadOptions = {
 }
 const download = async ({
   url,
-  name = getFileName(url),
+  name = CryptoJS.MD5(url).toString(),
   album = 'Photo',
 }: DownloadOptions) => {
   try {
-    const downloadPath = `${RNFS.TemporaryDirectoryPath}/${name}.${getExtension(
-      url,
-    )}`
-    const options: DownloadFileOptions = {
-      fromUrl: url,
-      toFile: downloadPath,
-      headers: { Referer: Pixiv.REFERER },
-    }
-    const downloadResult = await RNFS.downloadFile(options).promise
+    const dirs = RNFetchBlob.fs.dirs
+    const downloadPath = `${dirs.CacheDir}/${name}.${getExtension(url)}`
+    const downloadResult = await RNFetchBlob.config({
+      path: downloadPath,
+    })
+      .fetch('GET', url, {
+        Referer: Pixiv.REFERER,
+      })
+      .then((res) => {
+        return res.path()
+      })
     let saveResult = await CameraRoll.saveAsset('file://' + downloadPath, {
       type: 'photo',
       album: album,

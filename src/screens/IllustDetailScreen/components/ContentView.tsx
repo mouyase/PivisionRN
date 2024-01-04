@@ -24,6 +24,7 @@ import AnimatedFastImage from '@/components/AnimatedFastImage'
 import SvgSave from '@/assets/svg/icon/SvgSave'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import SaveButton from '@/components/SaveButton'
+import PlaceholderPage from '@/components/PlaceholderPage'
 
 type ContentViewProps = {
   data: Illust
@@ -46,10 +47,10 @@ const ContentView = (props: ContentViewProps) => {
           <View style={[F, JE]}>
             <View style={[ROW, AC, H(48)]}>
               <AnimatedFastImage
-                style={[WH(48), CIRCLE]}
+                style={[WH(48), CIRCLE, { overflow: 'hidden' }]}
                 imageStyle={[CIRCLE]}
                 url={profile_image_urls.medium}
-                resizeMode={'contain'}
+                resizeMode={'cover'}
               />
               <View style={[F, ML(8), JB]}>
                 <View>
