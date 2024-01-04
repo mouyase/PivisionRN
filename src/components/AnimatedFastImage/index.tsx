@@ -11,7 +11,14 @@ import { ABSOLUTE, BGC, F, H, W } from '@/utils/CommonStyles'
 import { memo, useMemo } from 'react'
 
 const AnimatedFastImage = (props: AnimatedFastImageProps) => {
-  const { url, width, height, resizeMode, enableColorful = false } = props
+  const {
+    url,
+    width,
+    height,
+    resizeMode,
+    enableColorful = false,
+    imageStyle,
+  } = props
 
   const backgroundColor = enableColorful ? getRandomColor() : '#DDD'
 
@@ -83,5 +90,6 @@ const getRandomColor = (): ColorValue => {
   function getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min
   }
+
   return RandomColorList[getRandomInt(0, RandomColorList.length)]
 }

@@ -25,7 +25,6 @@ const IllustListItem = (props: ListItemFastImageViewProps) => {
   const count = item.page_count
 
   const isShowCount = count > 1
-  console.log(item)
 
   const { width, height } = ListUtils.getListItemWH({
     width: item.width,
@@ -50,7 +49,7 @@ const IllustListItem = (props: ListItemFastImageViewProps) => {
         <View style={[ABSOLUTE, JE, AE]}>
           {isShowCount && (
             <View style={[BGC('#0006'), PH(8)]}>
-              <Text style={[FC('#FFF'), FS(10)]}>{count}P</Text>
+              <Text style={[FC('#FFF'), FS(12)]}>{count}P</Text>
             </View>
           )}
         </View>

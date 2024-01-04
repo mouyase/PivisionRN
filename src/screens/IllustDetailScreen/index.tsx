@@ -6,6 +6,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useMount } from 'ahooks'
 import { useState } from 'react'
 import PlaceholderPage from '@/components/PlaceholderPage'
+import ContentView from '@/screens/IllustDetailScreen/components/ContentView'
 
 const IllustDetailScreen = ({
   route,
@@ -18,7 +19,7 @@ const IllustDetailScreen = ({
   }
 
   return (
-    <PlaceholderPage>
+    <PlaceholderPage backgroundColor={'#000'}>
       <View style={[F]}>
         <PagerView
           style={[F]}
@@ -26,13 +27,7 @@ const IllustDetailScreen = ({
           orientation={'vertical'}
           offscreenPageLimit={3}>
           {illusts.map((value) => (
-            <View style={[W100, H100, BGC('#000')]} key={value.id}>
-              <AnimatedFastImage
-                style={[F]}
-                url={value.image_urls.large}
-                resizeMode={'contain'}
-              />
-            </View>
+            <ContentView key={value.id} data={value} />
           ))}
         </PagerView>
       </View>

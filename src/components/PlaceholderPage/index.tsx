@@ -1,5 +1,5 @@
-import { View } from 'react-native'
-import { BGC, F } from '@/utils/CommonStyles'
+import { ActivityIndicator, View } from 'react-native'
+import { BGC, CENTER, F } from '@/utils/CommonStyles'
 import { useEffect, useState } from 'react'
 
 const PlaceholderPage = (props: PlaceholderPageProps) => {
@@ -12,7 +12,11 @@ const PlaceholderPage = (props: PlaceholderPageProps) => {
 
   return (
     <View style={[F]}>
-      {!isMount && <View style={[F, BGC(backgroundColor)]} />}
+      {!isMount && (
+        <View style={[F, BGC(backgroundColor), CENTER]}>
+          <ActivityIndicator size={'large'} />
+        </View>
+      )}
       {isMount && children}
     </View>
   )

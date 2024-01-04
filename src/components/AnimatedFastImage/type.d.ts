@@ -1,4 +1,4 @@
-import { ViewProps } from 'react-native'
+import { ViewProps, ViewStyle } from 'react-native'
 
 declare global {
   declare type ResizeMode = 'cover' | 'contain' | 'stretch' | 'center'
@@ -9,5 +9,6 @@ declare global {
     width?: number
     height?: number
     enableColorful?: boolean
+    imageStyle?: ViewStyle | ViewStyle[]
   } & ViewProps
 }

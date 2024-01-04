@@ -26,10 +26,20 @@ declare type Illust = {
   total_bookmarks: number
   total_view: number
   type: IllustType
-  user: Object
+  user: User
   visible: boolean
   width: number
   x_restrict: number
+}
+
+declare type User = {
+  account: string
+  id: number
+  is_followed: boolean
+  name: string
+  profile_image_urls: {
+    medium: string
+  }
 }
 
 declare type IllustsRes = {
