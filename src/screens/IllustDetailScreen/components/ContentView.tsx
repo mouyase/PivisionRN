@@ -1,15 +1,13 @@
-import { Text, TouchableOpacity, View, ViewProps } from 'react-native'
+import { Text, View, ViewProps } from 'react-native'
 import {
   ABSOLUTE,
   AC,
-  AE,
   BGC,
   CIRCLE,
   F,
   FC,
   FS,
   H,
-  H100,
   JB,
   JE,
   ML,
@@ -17,14 +15,11 @@ import {
   PH,
   PT,
   ROW,
-  W100,
   WH,
 } from '@/utils/CommonStyles'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
-import SvgSave from '@/assets/svg/icon/SvgSave'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import SaveButton from '@/components/SaveButton'
-import PlaceholderPage from '@/components/PlaceholderPage'
 
 type ContentViewProps = {
   data: Illust

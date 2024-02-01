@@ -1,16 +1,9 @@
-import { ColorValue, Text, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import Pixiv from '@/values/Pixiv'
+import { Text, View } from 'react-native'
 import ListUtils from '@/utils/ListUtils'
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated'
+
 import { ABSOLUTE, AE, BGC, FC, FS, H, JE, PH, W } from '@/utils/CommonStyles'
 import { memo } from 'react'
 import TouchView from '@/components/TouchView'
-import useNavigation from '@/hooks/useNavigation'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
 
 type ListItemFastImageViewProps = {

@@ -7,7 +7,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import { ABSOLUTE, BGC, CIRCLE, F, H, W } from '@/utils/CommonStyles'
+import { ABSOLUTE, BGC, F, H, W } from '@/utils/CommonStyles'
 import { memo, useMemo } from 'react'
 
 const AnimatedFastImage = (props: AnimatedFastImageProps) => {

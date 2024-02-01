@@ -1,7 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
 import AppStackRouter from '@/routers/AppStackRouter'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { MD2LightTheme, MD3LightTheme, PaperProvider } from 'react-native-paper'
+import { MD3LightTheme, PaperProvider } from 'react-native-paper'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { F } from '@/utils/CommonStyles'
 
 const App = () => {
   const theme = {
@@ -55,7 +57,9 @@ const App = () => {
     <NavigationContainer>
       <SafeAreaProvider>
         <PaperProvider theme={theme}>
-          <AppStackRouter />
+          <GestureHandlerRootView style={[F]}>
+            <AppStackRouter />
+          </GestureHandlerRootView>
         </PaperProvider>
       </SafeAreaProvider>
     </NavigationContainer>

@@ -5,8 +5,17 @@ import { useWindowDimensions, View } from 'react-native'
 import ListUtils from '@/utils/ListUtils'
 import ListItemFastImageView from '@/screens/HomeScreen/components/IllustListItem'
 import useNavigation from '@/hooks/useNavigation'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { NativeSyntheticEvent } from 'react-native/Libraries/Types/CoreEventTypes'
+import { NativeScrollEvent } from 'react-native/Libraries/Components/ScrollView/ScrollView'
 
-const RecommendedView = () => {
+type RecommendedViewProps = {
+  onScroll?:
+    | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
+    | undefined
+}
+const RecommendedView = (props: RecommendedViewProps) => {
+  const { onScroll } = props
   const navigation = useNavigation()
   const [illustList, setIllustList] = useState<Illust[]>([])
   const [nextUrl, setNextUrl] = useState<string>()
@@ -37,10 +46,11 @@ const RecommendedView = () => {
   const onItemPress = (index: number) => {
     navigation.push('IllustDetail', { illusts: illustList, index })
   }
-
+  const insets = useSafeAreaInsets()
   return (
     <View style={{ flex: 1, backgroundColor: '#eee' }}>
       <MasonryFlashList
+        // ListHeaderComponentStyle={{ height: 240 - insets.top }}
         renderItem={({ item, index }) => (
           <ListItemFastImageView
             item={item}
@@ -48,6 +58,7 @@ const RecommendedView = () => {
             onItemPress={() => onItemPress(index)}
           />
         )}
+        // onScroll={onScroll}
         numColumns={numColumns}
         data={illustList}
         onEndReached={onEndReached}

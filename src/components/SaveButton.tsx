@@ -5,7 +5,7 @@ import {
   ViewProps,
 } from 'react-native'
 import SvgSave from '@/assets/svg/icon/SvgSave'
-import { BGC, CENTER, FC, WH } from '@/utils/CommonStyles'
+import { CENTER, WH } from '@/utils/CommonStyles'
 import { useCallback, useState } from 'react'
 import ImageDownloader from '@/utils/ImageDownloader'
 

@@ -2,8 +2,7 @@ import { SvgXml } from 'react-native-svg'
 import { ColorValue, View, ViewProps } from 'react-native'
 
 const xml = `
-<svg width="200" height="200" class="icon" viewBox="0 0 1024 1024"><path d="M640 384H213.3V213.3H640M512 810.7a128 128 0 0 1-128-128 128 128 0 0 1 128-128 128 128 0 0 1 128 128 128 128 0 0 1-128 128M725.3 128h-512a85.3 85.3 0 0 0-85.3 85.3v597.4a85.3 85.3 0 0 0 85.3 85.3h597.4a85.3 85.3 0 0 0 85.3-85.3v-512L725.3 128z"/></svg>
-`
+<svg width="200" height="200" class="icon" viewBox="0 0 1024 1024"><path d="M128 256h768v85.3H128V256m0 213.3h768v85.4H128v-85.4m0 213.4h768V768H128v-85.3z"/></svg>`
 const SvgHeart = (props: { fill?: ColorValue } & ViewProps) => (
   <View {...props}>
     <SvgXml

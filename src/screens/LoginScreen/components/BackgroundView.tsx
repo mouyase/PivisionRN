@@ -1,5 +1,5 @@
 import { Dimensions, FlatList, ListRenderItem, View } from 'react-native'
-import { FC, memo, useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '@/api'
 import AnimatedFastImage from '@/components/AnimatedFastImage'
 import { useRequest } from 'ahooks'
@@ -11,7 +11,6 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated'
-import { Text } from 'react-native-paper'
 
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
