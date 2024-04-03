@@ -1,4 +1,7 @@
 package tech.yojigen.pivision.rn;
+import android.content.res.Configuration;
+import expo.modules.ApplicationLifecycleDispatcher;
+import expo.modules.ReactNativeHostWrapper;
 
 import android.app.Application;
 import android.content.Context;
@@ -19,7 +22,7 @@ import tech.yojigen.fuckgfw.CustomClientFactory;
 public class MainApplication extends Application implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost =
-            new DefaultReactNativeHost(this) {
+            new ReactNativeHostWrapper(this, new DefaultReactNativeHost(this) {
                 @Override
                 public boolean getUseDeveloperSupport() {
                     return BuildConfig.DEBUG;
@@ -48,7 +51,7 @@ public class MainApplication extends Application implements ReactApplication {
                 protected Boolean isHermesEnabled() {
                     return BuildConfig.IS_HERMES_ENABLED;
                 }
-            };
+            });
 
     @Override
     public ReactNativeHost getReactNativeHost() {
@@ -65,11 +68,18 @@ public class MainApplication extends Application implements ReactApplication {
         }
         ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
         OkHttpClientProvider.setOkHttpClientFactory(new CustomClientFactory());
-    }
+      ApplicationLifecycleDispatcher.onApplicationCreate(this);
+  }
 
     @Override
     protected void attachBaseContext(Context newBase) {
         /* 锁定App的缩放大小 */
         super.attachBaseContext(DisplayUtils.getConfigurationContext(newBase));
     }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    ApplicationLifecycleDispatcher.onConfigurationChanged(this, newConfig);
+  }
 }
