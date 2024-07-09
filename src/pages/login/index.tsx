@@ -47,22 +47,38 @@ export const LoginPage = () => {
   // }, [request])
 
   useEffect(() => {
-    console.log('???', response)
-    // if (response?.type === 'success') {
-    //   const { code } = response.params
-    //   console.log('???', response)
-    // }
-  }, [response])
+    if (response?.type === 'error') {
+      const { code } = response.params
+      // exchangeCodeAsync(
+      //   {
+      //     clientId: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
+      //     code,
+      //     redirectUri:
+      //       'https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback',
+      //     clientSecret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
+      //     extraParams: {
+      //       grant_type: 'authorization_code',
+      //       code_verifier: request?.codeVerifier!,
+      //       include_policy: 'true',
+      //     },
+      //   },
+      //   { tokenEndpoint: 'https://oauth.secure.pixiv.net/auth/token' },
+      // )
+      //   .then((value) => {
+      //     console.log(value)
+      //   })
+      //   .catch((reason) => {
+      //     console.error(reason)
+      //   })
+    }
+  }, [request?.codeVerifier, response])
 
   const onPress = useCallback(() => {
     if (!request) {
       return
     }
-    console.log(request)
     promptAsync()
-      .then((value) => {
-        console.log('你好', value)
-      })
+      .then(() => {})
       .catch((reason) => {
         console.log(reason)
       })
