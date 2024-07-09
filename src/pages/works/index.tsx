@@ -4,28 +4,40 @@
  * @用途 Todo
  */
 import { View } from 'react-native'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { TestData } from '@/pages/works/tesetdata.ts'
 import PagerView from 'react-native-pager-view'
 import { F } from '@/common/CommonStyles.ts'
 import { Image } from 'expo-image'
+import { LazyPagerView } from '@/components/LazyPagerView.tsx'
 
 export const WorksPage = () => {
   const data = useMemo(() => {
-    return [...TestData.image, ...TestData.image, ...TestData.image]
+    return [
+      ...TestData.image,
+      ...TestData.image,
+      ...TestData.image,
+      ...TestData.image,
+      ...TestData.image,
+      ...TestData.image,
+    ]
   }, [])
+
+  const [current, setCurrent] = useState(0)
 
   return (
     <View style={[F]}>
       <PagerView
         style={[F]}
+        offscreenPageLimit={2}
         orientation={'vertical'}
         initialPage={0}
+        onPageSelected={({ nativeEvent }) => setCurrent(nativeEvent.position)}
         useNext={false}>
-        {data.map((i, key) => (
-          <View key={key} style={[F]}>
+        {data.map((i, index) => (
+          <LazyPagerView key={index} index={index} current={current}>
             <Image style={[F]} source={i} />
-          </View>
+          </LazyPagerView>
         ))}
       </PagerView>
     </View>
