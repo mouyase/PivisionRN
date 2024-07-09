@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomePage } from '@/pages/home'
 import { StatusBar } from 'react-native'
 import { WorksPage } from '@/pages/works'
+import { LoginPage } from '@/pages/login'
 
 const Stack = createNativeStackNavigator()
 
@@ -24,7 +25,8 @@ export const AppRouter = () => {
           headerShown: false,
           gestureEnabled: false,
         }}
-        initialRouteName={'HomePage'}>
+        initialRouteName={'LoginPage'}>
+        <Stack.Screen name='LoginPage' component={LoginPage} />
         <Stack.Screen name='HomePage' component={HomePage} />
         <Stack.Screen name='WorksPage' component={WorksPage} />
       </Stack.Navigator>
