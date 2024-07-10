@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
+  formatter: "@commitlint/format",
   rules: {
     "type-enum": [
       2,
@@ -7,5 +8,4 @@ module.exports = {
       ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore"],
     ],
   },
-  formatter: "@commitlint/format",
 };
