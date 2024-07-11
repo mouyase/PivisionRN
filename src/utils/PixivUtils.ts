@@ -20,16 +20,14 @@ const getTimeAndHash = async (): Promise<{
   return { time, hash }
 }
 
-const getHeader = async () => {
+const getHeader = async (): Promise<{ [key: string]: string }> => {
   const { time, hash } = await getTimeAndHash()
   return {
-    'user-agent': Pixiv.USER_AGENT,
     'accept-language': 'zh_CN',
     'app-accept-language': 'zh-hans',
     'app-os': Device.OS.toLowerCase(),
-    'app-os-version': Device.API_LEVEL,
+    'app-os-version': `${Device.API_LEVEL || 0}`,
     'app-version': Pixiv.CLIENT_VERSION,
-    'content-type': 'application/x-www-form-urlencoded',
     'x-client-time': time,
     'x-client-hash': hash,
   }

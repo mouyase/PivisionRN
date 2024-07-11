@@ -8,17 +8,20 @@ import * as WebBrowser from 'expo-web-browser'
 import * as Linking from 'expo-linking'
 import { CodeChallengeMethod, useAuthRequest } from 'expo-auth-session'
 import { Pixiv } from '@/values/Pixiv.ts'
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
+import { Account } from '@/api/account.ts'
 
 WebBrowser.maybeCompleteAuthSession()
 
 export const usePixivOAuth = () => {
+  const codeVerifier = useRef(getCodeVerifier())
+
   const [request, response, promptAsync] = useAuthRequest(
     {
       clientId: Pixiv.CLIENT_ID,
       clientSecret: Pixiv.CLIENT_SECRET,
       redirectUri: redirectUrl,
-      codeChallenge: getCodeVerifier(),
+      codeChallenge: codeVerifier.current,
       codeChallengeMethod: CodeChallengeMethod.S256,
       extraParams: { client: 'pixiv-android' },
     },
@@ -31,7 +34,13 @@ export const usePixivOAuth = () => {
     promptAsync().then((value) => {
       if (value.type === 'success' || value.type === 'error') {
         const code = value.params.code
-        console.log(code)
+        console.log(value)
+        Account.auth({
+          code,
+          code_verifier: codeVerifier.current,
+        }).then((value1) => {
+          console.log(value1)
+        })
       }
     })
   }, [promptAsync])
