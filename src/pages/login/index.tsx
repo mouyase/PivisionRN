@@ -7,14 +7,15 @@ import { Pressable, View } from 'react-native'
 import { BGC, CENTER, F, WH } from '@/common/CommonStyles.ts'
 import { usePixivOAuth } from '@/hooks/usePixivOAuth.ts'
 import { useCallback } from 'react'
-import { getTimeAndHash } from '@/utils/PixivUtils.ts'
+import { Pixiv } from '@/values/Pixiv.ts'
 
 export const LoginPage = () => {
   const OAuth = usePixivOAuth()
 
   const onLoginPress = useCallback(() => {
     // OAuth().then()
-    getTimeAndHash()
+    // console.log(Device)
+    console.log(Pixiv)
   }, [])
 
   return (

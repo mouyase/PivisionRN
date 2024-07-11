@@ -6,8 +6,9 @@
 import dayjs from 'dayjs'
 import * as Crypto from 'expo-crypto'
 import { Pixiv } from '@/values/Pixiv.ts'
+import { Device } from '@/values/Device.ts'
 
-export const getTimeAndHash = async (): Promise<{
+const getTimeAndHash = async (): Promise<{
   time: string
   hash: string
 }> => {
@@ -17,4 +18,24 @@ export const getTimeAndHash = async (): Promise<{
     time + Pixiv.SALT,
   )
   return { time, hash }
+}
+
+const getHeader = async () => {
+  const { time, hash } = await getTimeAndHash()
+  return {
+    'user-agent': Pixiv.USER_AGENT,
+    'accept-language': 'zh_CN',
+    'app-accept-language': 'zh-hans',
+    'app-os': Device.OS.toLowerCase(),
+    'app-os-version': Device.API_LEVEL,
+    'app-version': Pixiv.CLIENT_VERSION,
+    'content-type': 'application/x-www-form-urlencoded',
+    'x-client-time': time,
+    'x-client-hash': hash,
+  }
+}
+
+export const PixivUtils = {
+  getTimeAndHash,
+  getHeader,
 }

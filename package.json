@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start --reset-cache",
-    "android": "react-native run-android --terminal terminal",
+    "android": "react-native run-android --active-arch-only --terminal terminal ",
     "ios": "react-native run-ios",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\""
   },
