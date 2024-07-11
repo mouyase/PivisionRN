@@ -6,23 +6,32 @@
 
 import * as WebBrowser from 'expo-web-browser'
 import * as Linking from 'expo-linking'
-import { CodeChallengeMethod, useAuthRequest } from 'expo-auth-session'
-import { Pixiv } from '@/values/Pixiv.ts'
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Account } from '@/api/account.ts'
+import { Pixiv } from '@/values/Pixiv.ts'
+import { useAuthRequest } from 'expo-auth-session'
 
 WebBrowser.maybeCompleteAuthSession()
 
 export const usePixivOAuth = () => {
-  const codeVerifier = useRef(getCodeVerifier())
+  useEffect(() => {
+    WebBrowser.warmUpAsync().then((value) => {
+      console.log('浏览器预加载完成', value.servicePackage)
+    })
+    return () => {
+      WebBrowser.coolDownAsync().then((value) => {
+        console.log('浏览器已卸载', value.servicePackage)
+      })
+    }
+  }, [])
 
   const [request, response, promptAsync] = useAuthRequest(
     {
       clientId: Pixiv.CLIENT_ID,
       clientSecret: Pixiv.CLIENT_SECRET,
-      redirectUri: redirectUrl,
-      codeChallenge: codeVerifier.current,
-      codeChallengeMethod: CodeChallengeMethod.S256,
+      redirectUri: Linking.createURL('account/login', {
+        scheme: 'pixiv',
+      }),
       extraParams: { client: 'pixiv-android' },
     },
     {
@@ -31,31 +40,16 @@ export const usePixivOAuth = () => {
   )
 
   return useCallback(async () => {
-    promptAsync().then((value) => {
-      if (value.type === 'success' || value.type === 'error') {
-        const code = value.params.code
-        console.log(value)
-        Account.auth({
+    if (request) {
+      const result = await promptAsync()
+      if (result.type === 'success' || result.type === 'error') {
+        const code = result.params.code
+        return Account.auth({
           code,
-          code_verifier: codeVerifier.current,
-        }).then((value1) => {
-          console.log(value1)
+          code_verifier: request.codeVerifier!,
         })
       }
-    })
-  }, [promptAsync])
+    }
+    return Promise.reject()
+  }, [promptAsync, request])
 }
-
-const getCodeVerifier = () => {
-  const possible =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~'
-  let codeVerifier = ''
-  for (let i = 0; i < 128; i++) {
-    codeVerifier += possible.charAt(Math.floor(Math.random() * possible.length))
-  }
-  return codeVerifier
-}
-
-const redirectUrl = Linking.createURL('account/login', {
-  scheme: 'pixiv',
-})

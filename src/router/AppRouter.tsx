@@ -6,7 +6,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomePage } from '@/pages/home'
-import { StatusBar } from 'react-native'
 import { WorksPage } from '@/pages/works'
 import { LoginPage } from '@/pages/login'
 
@@ -15,11 +14,6 @@ const Stack = createNativeStackNavigator()
 export const AppRouter = () => {
   return (
     <NavigationContainer>
-      <StatusBar
-        backgroundColor={'transparent'}
-        barStyle={'dark-content'}
-        translucent={true}
-      />
       <Stack.Navigator
         screenOptions={{
           headerShown: false,

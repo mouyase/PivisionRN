@@ -33,6 +33,7 @@ api.interceptors.response.use(
     return res.data
   },
   (error) => {
+    console.error(error.response.data)
     return Promise.reject(error)
   },
 )

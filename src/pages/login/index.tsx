@@ -12,7 +12,9 @@ export const LoginPage = () => {
   const OAuth = usePixivOAuth()
 
   const onLoginPress = useCallback(() => {
-    OAuth().then()
+    OAuth().then((value) => {
+      console.log(value)
+    })
     // console.log(Device)
     // console.log(Pixiv)
     // api.get('/v1/walkthrough/illusts').then((value) => {

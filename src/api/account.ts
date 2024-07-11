@@ -5,7 +5,7 @@
  */
 import { Pixiv } from '@/values/Pixiv.ts'
 import qs from 'qs'
-import { PixivUtils } from '@/utils/PixivUtils.ts'
+import { api } from '@/network/api.ts'
 
 const auth = async ({
   code_verifier,
@@ -23,20 +23,9 @@ const auth = async ({
     client_secret: Pixiv.CLIENT_SECRET,
     include_policy: true,
   }
-  // return await api.post('/auth/token', qs.stringify(body), {
-  //   baseURL: Pixiv.OAUTH_BASE_URI,
-  // })
-  return await fetch(Pixiv.OAUTH_BASE_URI + '/auth/token', {
-    method: 'POST',
-    headers: await PixivUtils.getHeader(),
-    body: qs.stringify(body),
+  return await api.post('/auth/token', qs.stringify(body), {
+    baseURL: Pixiv.OAUTH_BASE_URI,
   })
-    .then((value) => {
-      console.log(value)
-    })
-    .catch((reason) => {
-      console.error(reason)
-    })
 }
 
 export const Account = {

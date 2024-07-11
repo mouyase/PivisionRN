@@ -1,4 +1,15 @@
 {
   "name": "PivisionRN",
-  "displayName": "PivisionRN"
+  "displayName": "PivisionRN",
+  "expo": {
+    "scheme": "pixiv",
+    "plugins": [
+      [
+        "expo-dev-launcher",
+        {
+          "launchMode": "most-recent"
+        }
+      ]
+    ]
+  }
 }
