@@ -10,6 +10,7 @@ import { useCallback, useEffect } from 'react'
 import { Account } from '@/api/account.ts'
 import { Pixiv } from '@/values/Pixiv.ts'
 import { useAuthRequest } from 'expo-auth-session'
+import * as SecureStore from 'expo-secure-store'
 
 WebBrowser.maybeCompleteAuthSession()
 
@@ -38,16 +39,18 @@ export const usePixivOAuth = () => {
       authorizationEndpoint: Pixiv.LOGIN_URL,
     },
   )
-
   return useCallback(async () => {
     if (request) {
       const result = await promptAsync()
       if (result.type === 'success' || result.type === 'error') {
         const code = result.params.code
-        return Account.auth({
+        const account = await Account.auth({
           code,
           code_verifier: request.codeVerifier!,
         })
+        await SecureStore.setItemAsync('access_token', account.access_token)
+        await SecureStore.setItemAsync('refresh_token', account.refresh_token)
+        return account
       }
     }
     return Promise.reject()

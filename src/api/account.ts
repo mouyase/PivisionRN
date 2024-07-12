@@ -23,9 +23,11 @@ const auth = async ({
     client_secret: Pixiv.CLIENT_SECRET,
     include_policy: true,
   }
-  return await api.post('/auth/token', qs.stringify(body), {
-    baseURL: Pixiv.OAUTH_BASE_URI,
-  })
+  return await api
+    .post('/auth/token', qs.stringify(body), {
+      baseURL: Pixiv.OAUTH_BASE_URI,
+    })
+    .then((value) => value.data)
 }
 
 export const Account = {

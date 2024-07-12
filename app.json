@@ -9,7 +9,9 @@
         {
           "launchMode": "most-recent"
         }
-      ]
+      ],
+      "expo-localization",
+      "expo-secure-store"
     ]
   }
 }
