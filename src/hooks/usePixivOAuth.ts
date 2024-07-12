@@ -50,7 +50,7 @@ export const usePixivOAuth = () => {
         })
         await SecureStore.setItemAsync('access_token', account.access_token)
         await SecureStore.setItemAsync('refresh_token', account.refresh_token)
-        return account
+        return Promise.resolve(account)
       }
     }
     return Promise.reject()

@@ -13,7 +13,7 @@ const auth = async ({
 }: {
   code_verifier: string
   code: string
-}) => {
+}): Promise<TAccount.UserRes> => {
   const body = {
     code_verifier,
     code,
