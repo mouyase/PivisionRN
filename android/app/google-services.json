@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344846256400",
+    "project_id": "pivisionrn",
+    "storage_bucket": "pivisionrn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344846256400:android:eaf45de2f31b5c49e47d95",
+        "android_client_info": {
+          "package_name": "tech.yojigen.pivision.rn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYPjgTaxmCm4-VtL8yB3Ax8ZAg48DHG54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

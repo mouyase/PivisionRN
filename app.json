@@ -2,7 +2,7 @@
   "name": "PivisionRN",
   "displayName": "PivisionRN",
   "expo": {
-    "scheme": "pixiv",
+    "scheme": "pixiv://account/login",
     "plugins": [
       [
         "expo-dev-launcher",

@@ -1,4 +1,4 @@
-package com.pivisionrn
+package tech.yojigen.pivision.rn
 
 import android.os.Bundle
 import expo.modules.ReactActivityDelegateWrapper

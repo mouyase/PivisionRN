@@ -9,7 +9,7 @@ buildscript {
     }
     repositories {
         maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/releases' }
         maven { url 'https://maven.aliyun.com/repository/public' }
@@ -21,6 +21,9 @@ buildscript {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.google.gms:google-services:4.4.2")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.2")
+
     }
 }
 
@@ -28,7 +31,7 @@ allprojects {
     buildscript {
         repositories {
             maven { url 'https://maven.aliyun.com/repository/central' }
-            maven { url 'https://maven.aliyun.com/repository/google' }
+//            maven { url 'https://maven.aliyun.com/repository/google' }
             maven { url 'https://maven.aliyun.com/repository/jcenter' }
             maven { url 'https://maven.aliyun.com/repository/releases' }
             maven { url 'https://maven.aliyun.com/repository/public' }
@@ -40,7 +43,7 @@ allprojects {
 
     repositories {
         maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/releases' }
         maven { url 'https://maven.aliyun.com/repository/public' }
@@ -51,3 +54,20 @@ allprojects {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+project.ext {
+    set('react-native', [
+        versions: [
+            // Overriding Build/Android SDK Versions
+            android : [
+                minSdk    : 23,
+                targetSdk : 34,
+                compileSdk: 34,
+            ],
+            // Overriding Library SDK Versions
+            firebase: [
+                bom: "33.1.2"
+            ],
+        ],
+    ])
+}

@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "start": "watchman watch-del $PWD && react-native start --reset-cache",
-    "android": "react-native run-android --active-arch-only --terminal terminal ",
+    "android": "react-native run-android --active-arch-only --terminal terminal",
+    "build:android": "react-native build-android --tasks assembleRelease",
     "ios": "react-native run-ios",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\""
   },
   "dependencies": {
+    "@react-native-firebase/app": "^20.2.0",
+    "@react-native-firebase/crashlytics": "^20.2.0",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.10.0",
     "@shopify/flash-list": "^1.7.0",

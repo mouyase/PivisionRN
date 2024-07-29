@@ -9,12 +9,21 @@ import { HomePage } from '@/pages/home'
 import { WorksPage } from '@/pages/works'
 import { LoginPage } from '@/pages/login'
 import { SplashPage } from '@/pages/splash'
+import * as Linking from 'expo-linking'
 
 const Stack = createNativeStackNavigator()
 
+const prefix = Linking.createURL('account/login', {
+  scheme: 'pixiv',
+})
+
 export const AppRouter = () => {
+  const linking = {
+    prefixes: [prefix],
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
