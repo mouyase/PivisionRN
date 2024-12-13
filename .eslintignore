@@ -1,0 +1,33 @@
+# 构建输出目录
+build/              # 通用构建输出目录
+dist/               # 通用分发目录
+.expo/              # Expo 构建缓存和配置目录
+web-build/          # Expo Web 构建输出目录
+
+# 依赖管理
+node_modules/       # npm/yarn/bun 包管理器的依赖目录
+
+# 缓存文件
+.cache/             # 通用缓存目录
+*.tsbuildinfo       # TypeScript 增量编译缓存文件
+
+# 环境配置文件
+.env*               # 所有环境变量文件
+!.env.example       # 除了环境变量示例文件
+
+# 其他系统和工具文件
+*.log               # 日志文件
+coverage/           # 测试覆盖率报告目录
+.idea/              # WebStorm/IDEA IDE 配置目录
+.vscode/           # VS Code 配置目录
+*.hprof            # Java 堆转储文件
+*.iml              # IDEA 项目文件
+
+# iOS 相关
+ios/Pods/          # iOS CocoaPods 依赖目录
+
+# Android 相关
+android/app/build/  # Android 应用构建输出
+android/build/      # Android 项目构建输出
+android/gradle/     # Gradle 包装器目录
+android/local.properties  # Android 本地配置文件 
