@@ -1,0 +1,5 @@
+[install]
+registry = "https://registry.npmmirror.com"
+
+[install.scopes]
+"@*" = "https://registry.npmmirror.com" 
