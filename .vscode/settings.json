@@ -1,9 +1,9 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
+  "prettier.requireConfig": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -16,27 +16,4 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.requireConfig": true,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": true,
-  "editor.semanticHighlighting.enabled": true,
-  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-  "editor.matchBrackets": "always",
-  "editor.semanticTokenColorCustomizations": {
-    "enabled": true,
-    "rules": {
-      "*.declaration": {
-        "bold": true
-      }
-    }
-  },
-  "workbench.colorCustomizations": {
-    "editorBracketHighlight.foreground1": "#5caeef",
-    "editorBracketHighlight.foreground2": "#dfb976",
-    "editorBracketHighlight.foreground3": "#c172d9",
-    "editorBracketHighlight.foreground4": "#4fb1bc",
-    "editorBracketHighlight.foreground5": "#97c26c",
-    "editorBracketHighlight.foreground6": "#abb2c0",
-    "editorBracketHighlight.unexpectedBracket.foreground": "#db6165"
-  }
 }
