@@ -27,6 +27,6 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": ["expo-router"],
-    "scheme": "pivisionrn"
+    "scheme": "pixiv"
   }
 }

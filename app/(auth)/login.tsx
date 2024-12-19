@@ -1,10 +1,14 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 export default function LoginPage() {
+  const handleLogin = () => {
+    // TODO: 实现登录逻辑
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>登录页面</Text>
-      <TouchableOpacity style={styles.button}>
+      <Text style={styles.title}>登录到 Pixiv</Text>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>登录</Text>
       </TouchableOpacity>
     </View>
