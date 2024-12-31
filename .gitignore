@@ -34,7 +34,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-# Android/iOS build folders
-android/
-ios/

@@ -1,9 +1,0 @@
-{
-  "recommendations": [
-    "inlang.vs-code-extension",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "rodrigovallades.es7-react-js-snippets",
-    "christian-kohler.path-intellisense"
-  ]
-}
