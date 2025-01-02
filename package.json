@@ -10,14 +10,27 @@
   },
   "dependencies": {
     "expo": "~52.0.23",
+    "expo-localization": "~16.0.0",
     "expo-status-bar": "~2.0.0",
+    "i18next": "^24.2.0",
     "react": "18.3.1",
-    "react-native": "0.76.5"
+    "react-i18next": "^15.4.0",
+    "react-native": "0.76.5",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
     "typescript": "^5.3.3"
   },
-  "private": true
+  "private": true,
+  "sherlock": {
+    "i18n": {
+      "entry": ["i18n/locales/zh.ts"],
+      "output": "i18n/locales",
+      "langs": ["zh", "en"],
+      "defaultLang": "zh",
+      "generator": "ts"
+    }
+  }
 }
