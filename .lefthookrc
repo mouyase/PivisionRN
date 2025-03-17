@@ -1,0 +1,2 @@
+PATH="/usr/local/bin:$PATH"
+PATH="$PWD/node_modules/.bin:$PATH"

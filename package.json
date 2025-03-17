@@ -7,5 +7,20 @@
   ],
   "scripts": {
     "main": "yarn workspace main"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.0",
+    "@evilmartians/lefthook": "^1.11.3",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "commitlint": "^19.8.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-i18next": "^6.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
   }
 }

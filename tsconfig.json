@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    // 禁止编译器忽略无法访问的代码
+    "allowUnreachableCode": false,
+    // 禁止编译器忽略未使用的标签
+    "allowUnusedLabels": false,
+    // 启用 CommonJS 和 ES 模块之间的互操作性
+    "esModuleInterop": true,
+    // 强制文件名大小写一致性
+    "forceConsistentCasingInFileNames": true,
+    // 指定 JSX 代码生成方式为 React 17+ 的新 JSX 转换
+    "jsx": "react-jsx",
+    // 指定编译过程中使用的库文件
+    "lib": [
+      "ESNext"
+    ],
+    // 指定生成的模块代码
+    "module": "ESNext",
+    // 指定模块解析策略
+    "moduleResolution": "Bundler",
+    // 不生成输出文件
+    "noEmit": true,
+    // 禁止 switch 语句中的 fallthrough 情况
+    "noFallthroughCasesInSwitch": true,
+    // 确保函数有返回值
+    "noImplicitReturns": true,
+    // 不禁止隐式的 'use strict'
+    "noImplicitUseStrict": false,
+    // 不禁用泛型检查
+    "noStrictGenericChecks": false,
+    // 为索引签名结果添加 undefined
+    "noUncheckedIndexedAccess": true,
+    // 报告未使用的局部变量的错误
+    "noUnusedLocals": true,
+    // 报告函数中未使用参数的错误
+    "noUnusedParameters": true,
+    // 允许导入 JSON 模块
+    "resolveJsonModule": true,
+    // 禁用 package.json 导入解析
+    "resolvePackageJsonImports": false,
+    // 跳过声明文件的类型检查
+    "skipLibCheck": true,
+    // 启用所有严格类型检查选项
+    "strict": true,
+    // 指定 ECMAScript 目标版本
+    "target": "ESNext",
+    // 使用精确的模块语法，保留导入导出语句
+    "verbatimModuleSyntax": true,
+  },
+}

@@ -1,0 +1,82 @@
+{
+  // 启用 ESLint 格式化
+  "eslint.format.enable": true,
+  // 保存时自动修复 ESLint 问题
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // 设置默认格式化工具为 ESLint
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  // JSON 文件的特定设置
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // JSONC 文件的特定设置
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // JavaScript 文件的特定设置
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // JavaScript React 文件的特定设置
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // TypeScript 文件的特定设置
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // TypeScript React 文件的特定设置
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // Markdown 文件的特定设置
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  // 保存时自动格式化
+  "editor.formatOnSave": true,
+  // 设置 i18n-ally 显示语言为简体中文
+  "i18n-ally.displayLanguage": "zh-CN",
+  // 设置 i18n-ally 键样式为嵌套式
+  "i18n-ally.keystyle": "nested",
+  // 设置 i18n-ally 本地化文件路径
+  "i18n-ally.localesPaths": [
+    "src/locales"
+  ],
+  // 设置 i18n-ally 源语言为简体中文
+  "i18n-ally.sourceLanguage": "zh-CN",
+  // 设置 JavaScript 导入模块说明符为非相对路径
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  // 设置 JavaScript 导入模块说明符结尾为最小化
+  "javascript.preferences.importModuleSpecifierEnding": "minimal",
+  // 设置 JavaScript 文件移动时自动更新导入
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // 设置 JavaScript 粘贴时自动更新导入
+  "javascript.updateImportsOnPaste.enabled": true,
+  // 设置 TypeScript 导入模块说明符为非相对路径
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  // 设置 TypeScript 导入模块说明符结尾为最小化
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  // 设置 TypeScript 文件移动时自动更新导入
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // 设置 TypeScript 粘贴时自动更新导入
+  "typescript.updateImportsOnPaste.enabled": true,
+  // 设置 TailwindCSS 识别的类属性名称
+  "tailwindCSS.classAttributes": [
+    "style"
+  ],
+  // 设置 TailwindCSS 实验性正则表达式匹配模式
+  "tailwindCSS.experimental.classRegex": [
+    // 匹配 tw`...` 模板字符串语法
+    "tw`([^`]*)",
+    // 匹配 tw('...') 模板字符串语法
+    "tw\\('([^']*)'\\)",
+    // 匹配 tw.style(...) 函数调用语法中的字符串
+    [
+      "tw.style\\(([^)]*)\\)",
+      "'([^']*)'"
+    ]
+  ]
+}
