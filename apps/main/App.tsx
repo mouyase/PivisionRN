@@ -1,7 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useMMKVString } from 'react-native-mmkv';
+
 
 export default function App() {
+  const [test, setTest] = useMMKVString('test');
+  console.log(test);
+
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
