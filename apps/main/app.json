@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PivisionRN",
-    "slug": "PivisionRN",
+    "name": "main",
+    "slug": "main",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,15 +13,13 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "tech.yojigen.PivisionRN"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "tech.yojigen.PivisionRN"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
