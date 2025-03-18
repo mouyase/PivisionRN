@@ -1,6 +1,7 @@
 {
   "name": "pivision-rn",
   "packageManager": "yarn@3.8.7",
+  "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"

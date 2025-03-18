@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     // 禁止编译器忽略无法访问的代码
     "allowUnreachableCode": false,
@@ -9,15 +10,16 @@
     // 强制文件名大小写一致性
     "forceConsistentCasingInFileNames": true,
     // 指定 JSX 代码生成方式为 React 17+ 的新 JSX 转换
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     // 指定编译过程中使用的库文件
     "lib": [
+      "DOM",
       "ESNext"
     ],
     // 指定生成的模块代码
     "module": "ESNext",
     // 指定模块解析策略
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
     // 不生成输出文件
     "noEmit": true,
     // 禁止 switch 语句中的 fallthrough 情况
@@ -47,4 +49,12 @@
     // 使用精确的模块语法，保留导入导出语句
     "verbatimModuleSyntax": true,
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts",
+  ],
+  "exclude": [
+    "node_modules",
+  ]
 }
