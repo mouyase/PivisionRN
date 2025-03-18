@@ -86,9 +86,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.anonymous.main'
+    namespace 'tech.yojigen.pivision.rn'
     defaultConfig {
-        applicationId 'com.anonymous.main'
+        applicationId 'tech.yojigen.pivision.rn'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

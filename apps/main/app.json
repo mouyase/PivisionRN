@@ -14,14 +14,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.main"
+      "bundleIdentifier": "tech.yojigen.pivision.rn"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.main"
+      "package": "tech.yojigen.pivision.rn"
     },
     "web": {
       "favicon": "./assets/favicon.png"

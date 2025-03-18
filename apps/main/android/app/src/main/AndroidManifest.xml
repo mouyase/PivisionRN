@@ -25,6 +25,8 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="com.anonymous.main"/>
+        <data android:scheme="tech.yojigen.pivision.rn"/>
+        <data android:scheme="exp+main"/>
       </intent-filter>
     </activity>
   </application>

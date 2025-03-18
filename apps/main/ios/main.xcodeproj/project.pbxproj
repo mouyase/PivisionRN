@@ -302,7 +302,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.main";
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.yojigen.pivision.rn";
 				PRODUCT_NAME = "main";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -329,7 +329,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.main";
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.yojigen.pivision.rn";
 				PRODUCT_NAME = "main";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

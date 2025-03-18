@@ -1,4 +1,4 @@
-package com.anonymous.main
+package tech.yojigen.pivision.rn
 
 import android.app.Application
 import android.content.res.Configuration

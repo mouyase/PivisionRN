@@ -1,4 +1,4 @@
-package com.anonymous.main
+package tech.yojigen.pivision.rn
 
 import android.os.Build
 import android.os.Bundle

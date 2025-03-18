@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "main": "yarn workspace main"
+    "main": "yarn workspace @apps/main",
+    "core": "yarn workspace @packages/core"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.8.0",
