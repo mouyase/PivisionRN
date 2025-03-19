@@ -1,0 +1,9 @@
+{
+  "name": "@packages/prettierconfig",
+  "packageManager": "yarn@3.8.7",
+  "type": "module",
+  "exports": "./index.js",
+  "publishConfig": {
+    "access": "public"
+  }
+}

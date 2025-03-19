@@ -79,5 +79,11 @@
       "'([^']*)'"
     ]
   ],
-  "eslint.useFlatConfig": true
+  "eslint.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
 }

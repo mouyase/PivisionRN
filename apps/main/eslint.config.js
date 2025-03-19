@@ -1,3 +1,3 @@
-import { expoConfig } from "@packages/eslintconfig/expo";
+import { expoConfig } from '@packages/eslintconfig/expo'
 
-export default expoConfig;
+export default expoConfig

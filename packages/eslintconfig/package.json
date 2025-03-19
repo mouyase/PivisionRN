@@ -2,14 +2,16 @@
   "name": "@packages/eslintconfig",
   "packageManager": "yarn@3.8.7",
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "exports": {
     "./expo": "./expo.js"
   },
   "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@packages/prettierconfig": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
     "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-prettier": "^5.2.3"
-  }
+    "eslint-plugin-prettier": "^5.2.3",
+    "typescript-eslint": "^8.26.1"
+  },
+  "prettier": "@packages/prettierconfig"
 }

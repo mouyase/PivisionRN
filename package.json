@@ -4,7 +4,8 @@
   "scripts": {
     "main": "yarn workspace @apps/main",
     "dev": "turbo dev",
-    "build": "turbo build"
+    "build": "turbo build",
+    "lint": "turbo lint"
   },
   "workspaces": [
     "apps/*",
