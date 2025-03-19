@@ -41,9 +41,11 @@ __metadata:
     "@babel/core": ^7.25.2
     "@gorhom/bottom-sheet": ^5.1.2
     "@gorhom/portal": ^1.0.14
+    "@packages/core": "workspace:*"
     "@react-navigation/native": ^7.0.15
     "@react-navigation/native-stack": ^7.2.1
     "@shopify/flash-list": ^1.7.5
+    "@types/lodash-es": ^4.17.12
     "@types/react": ~18.3.12
     ahooks: ^3.8.4
     axios: ^1.8.3
@@ -2150,17 +2152,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@packages/core@workspace:packages/core":
+"@packages/core@workspace:*, @packages/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@packages/core@workspace:packages/core"
   dependencies:
-    "@react-navigation/native": ^7.0.15
-    "@react-navigation/native-stack": ^7.2.1
     "@types/react": ~18.3.12
     react-native: 0.76.7
   peerDependencies:
-    "@react-navigation/native": "*"
-    "@react-navigation/native-stack": "*"
     react: 18.3.1
     react-native: 0.76.7
   languageName: unknown
@@ -2585,6 +2583,22 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: 93eb18835770b3431f68ae9ac1ca91741ab85f7606f310a34b3586b5a34450ec038c3eed7ab19266635499594de52ff73723a54a72a75b9f7d6a956f01edee95
+  languageName: node
+  linkType: hard
+
+"@types/lodash-es@npm:^4.17.12":
+  version: 4.17.12
+  resolution: "@types/lodash-es@npm:4.17.12"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 990a99e2243bebe9505cb5ad19fbc172beb4a8e00f9075c99fc06c46c2801ffdb40bc2867271cf580d5f48994fc9fb076ec92cd60a20e621603bf22114e5b077
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.17.16
+  resolution: "@types/lodash@npm:4.17.16"
+  checksum: 915618c5735b10007e0ed7d06fdce6b344f88fc721d492b189a69064bfd046d2382e1ba61d683eeb61cad60ca0286cd110e6fe0fa4ab2e99066a40478376831d
   languageName: node
   linkType: hard
 

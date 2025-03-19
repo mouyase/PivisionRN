@@ -1,60 +1,53 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    // 禁止编译器忽略无法访问的代码
+    // JavaScript 支持：已启用
+    "allowJs": true,
+    // 无法访问的代码检查：已启用
     "allowUnreachableCode": false,
-    // 禁止编译器忽略未使用的标签
+    // 未使用标签检查：已启用
     "allowUnusedLabels": false,
-    // 启用 CommonJS 和 ES 模块之间的互操作性
+    // CommonJS 和 ES 模块互操作性：已启用
     "esModuleInterop": true,
-    // 强制文件名大小写一致性
+    // 文件名大小写一致性检查：已启用
     "forceConsistentCasingInFileNames": true,
-    // 指定 JSX 代码生成方式为 React 17+ 的新 JSX 转换
+    // JSX 支持类型
     "jsx": "react-native",
-    // 指定编译过程中使用的库文件
+    // 标准库
     "lib": [
-      "DOM",
       "ESNext"
     ],
-    // 指定生成的模块代码
+    // 模块系统
     "module": "ESNext",
-    // 指定模块解析策略
+    // 模块解析策略
     "moduleResolution": "node",
-    // 不生成输出文件
-    "noEmit": true,
-    // 禁止 switch 语句中的 fallthrough 情况
+    // switch 语句中的 fallthrough 检查：已启用
     "noFallthroughCasesInSwitch": true,
-    // 确保函数有返回值
+    // 输出文件生成：已禁止
+    "noEmit": true,
+    // 函数返回值检查：已启用
     "noImplicitReturns": true,
-    // 不禁止隐式的 'use strict'
+    // 隐式 'use strict' 禁用：已禁止
     "noImplicitUseStrict": false,
-    // 不禁用泛型检查
+    // 泛型检查禁用：已禁止
     "noStrictGenericChecks": false,
-    // 为索引签名结果添加 undefined
+    // 索引签名结果添加 undefined：已启用
     "noUncheckedIndexedAccess": true,
-    // 报告未使用的局部变量的错误
+    // 未使用局部变量检查：已启用
     "noUnusedLocals": true,
-    // 报告函数中未使用参数的错误
+    // 未使用参数检查：已启用
     "noUnusedParameters": true,
-    // 允许导入 JSON 模块
-    "resolveJsonModule": true,
-    // 禁用 package.json 导入解析
+    // package.json 导入解析：已禁止
     "resolvePackageJsonImports": false,
-    // 跳过声明文件的类型检查
+    // JSON 模块导入：已启用
+    "resolveJsonModule": true,
+    // 类型声明文件的类型检查跳过：已启用
     "skipLibCheck": true,
-    // 启用所有严格类型检查选项
+    // 所有严格类型检查选项：已启用
     "strict": true,
-    // 指定 ECMAScript 目标版本
+    // ECMAScript 目标版本
     "target": "ESNext",
-    // 使用精确的模块语法，保留导入导出语句
+    // 精确模块语法保留：已启用
     "verbatimModuleSyntax": true,
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts",
-  ],
-  "exclude": [
-    "node_modules",
-  ]
 }

@@ -1,7 +1,5 @@
 {
   "name": "@apps/main",
-  "version": "1.0.0",
-  "main": "index.ts",
   "scripts": {
     "prebuild": "expo prebuild",
     "start": "expo start --port 30000",
@@ -12,6 +10,7 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.1.2",
     "@gorhom/portal": "^1.0.14",
+    "@packages/core": "workspace:*",
     "@react-navigation/native": "^7.0.15",
     "@react-navigation/native-stack": "^7.2.1",
     "@shopify/flash-list": "^1.7.5",
@@ -41,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@types/lodash-es": "^4.17.12",
     "@types/react": "~18.3.12",
     "typescript": "^5.3.3"
   },

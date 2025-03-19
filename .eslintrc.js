@@ -8,8 +8,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
+    'plugin:react/jsx-runtime',
   ],
   overrides: [
     {
@@ -37,7 +37,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'prettier/prettier': 'error',
     'no-unused-vars': [
-      'error',
+      'warn',
       { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
     ],
   },

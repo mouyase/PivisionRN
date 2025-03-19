@@ -1,5 +1,5 @@
+import { AppRouter } from '@/router/AppRouter'
 import { NavigationContainer } from '@react-navigation/native'
-import { AppRouter } from './AppRouter'
 
 export const AppNavigation = () => {
   return (

@@ -1,4 +1,4 @@
-import { AppNavigation } from '@packages/core/src/router/AppNavigation'
+import { AppNavigation } from '@/router/AppNavigation'
 
 export default function App() {
   return <AppNavigation />
