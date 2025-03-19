@@ -78,5 +78,6 @@
       "tw.style\\(([^)]*)\\)",
       "'([^']*)'"
     ]
-  ]
+  ],
+  "eslint.useFlatConfig": true
 }

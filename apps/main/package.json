@@ -1,23 +1,24 @@
 {
   "name": "@apps/main",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "type": "module",
   "scripts": {
-    "prebuild": "expo prebuild",
-    "start": "expo start --port 30000",
-    "android": "expo run:android --port 30000",
-    "ios": "expo run:ios --port 30000",
+    "prebuild": "expo prebuild --platform android",
+    "lint": "eslint",
+    "dev": "expo start --port 30000",
+    "android": "yarn prebuild && expo run:android --no-bundler",
+    "ios": "yarn prebuild && expo run:ios --no-bundler",
     "web": "expo start --web"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^5.1.2",
-    "@gorhom/portal": "^1.0.14",
-    "@packages/core": "workspace:*",
     "@react-navigation/native": "^7.0.15",
     "@react-navigation/native-stack": "^7.2.1",
     "@shopify/flash-list": "^1.7.5",
     "ahooks": "^3.8.4",
     "axios": "^1.8.3",
     "dayjs": "^1.11.13",
-    "expo": "~52.0.38",
+    "expo": "~52.0.39",
     "expo-dev-client": "~5.0.14",
     "expo-status-bar": "~2.0.1",
     "expo-system-ui": "~4.0.8",
@@ -40,9 +41,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@packages/eslintconfig": "workspace:*",
+    "@packages/tsconfig": "workspace:*",
     "@types/lodash-es": "^4.17.12",
-    "@types/react": "~18.3.12",
-    "typescript": "^5.3.3"
+    "@types/react": "~18.3.12"
   },
   "private": true
 }

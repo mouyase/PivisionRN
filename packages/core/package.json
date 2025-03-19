@@ -1,12 +1,19 @@
 {
   "name": "@packages/core",
-  "main": "index.ts",
-  "devDependencies": {
-    "@types/react": "~18.3.12",
-    "react-native": "0.76.7"
+  "packageManager": "yarn@3.8.7",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react": "18.3.1",
     "react-native": "0.76.7"
+  },
+  "devDependencies": {
+    "@packages/tsconfig": "workspace:*",
+    "@types/react": "~18.3.12"
   }
 }

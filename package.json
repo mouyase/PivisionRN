@@ -1,28 +1,20 @@
 {
   "name": "pivision-rn",
   "packageManager": "yarn@3.8.7",
-  "private": true,
+  "scripts": {
+    "main": "yarn workspace @apps/main",
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
-  "scripts": {
-    "main": "yarn workspace @apps/main",
-    "core": "yarn workspace @packages/core"
-  },
   "devDependencies": {
-    "@commitlint/config-conventional": "^19.8.0",
-    "@evilmartians/lefthook": "^1.11.3",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "commitlint": "^19.8.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-i18next": "^6.1.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint": "^9.22.0",
     "prettier": "^3.5.3",
+    "tsup": "^8.4.0",
+    "turbo": "^2.4.4",
     "typescript": "^5.8.2"
   }
 }

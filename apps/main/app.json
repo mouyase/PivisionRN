@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "main",
+    "name": "PivisionRN",
     "slug": "main",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,8 +13,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "tech.yojigen.pivision.rn"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {

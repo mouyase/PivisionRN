@@ -1,0 +1,7 @@
+{
+  "name": "@packages/tsconfig",
+  "packageManager": "yarn@3.8.7",
+  "dependencies": {
+    "expo": "~52.0.39"
+  }
+}

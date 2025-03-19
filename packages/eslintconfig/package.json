@@ -1,0 +1,15 @@
+{
+  "name": "@packages/eslintconfig",
+  "packageManager": "yarn@3.8.7",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./expo": "./expo.js"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3"
+  }
+}
