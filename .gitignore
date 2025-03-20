@@ -1,8 +1,16 @@
-**/.yarn
-**/.turbo
+# 依赖相关 (Dependencies)
 **/node_modules
-**/dist
+**/.yarn/*
+!.yarn/releases
+!.yarn/plugins
+
+# 构建输出 (Build outputs)
 **/build
+**/dist
+
+# 构建缓存 (Build cache)
+**/.turbo
+
 **/.expo
 **/android
 **/ios
