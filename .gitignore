@@ -1,16 +1,47 @@
-# 依赖相关 (Dependencies)
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# 依赖相关
 **/node_modules
 **/.yarn/*
 !.yarn/releases
 !.yarn/plugins
 
-# 构建输出 (Build outputs)
-**/build
-**/dist
-
-# 构建缓存 (Build cache)
-**/.turbo
-
+# Expo原生相关
 **/.expo
 **/android
 **/ios

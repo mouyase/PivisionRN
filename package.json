@@ -1,21 +1,26 @@
 {
-  "name": "pivision-rn",
-  "packageManager": "yarn@3.8.7",
+  "name": "pivisionrn",
+  "version": "1.0.0",
+  "main": "index.ts",
   "scripts": {
-    "main": "yarn workspace @apps/main",
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "turbo lint"
+    "prebuild": "expo prebuild --platform android",
+    "start": "expo start",
+    "android": "expo run:android --port 60000",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "dependencies": {
+    "expo": "~52.0.46",
+    "expo-status-bar": "~2.0.1",
+    "expo-system-ui": "~4.0.9",
+    "react": "18.3.1",
+    "react-native": "0.76.9"
+  },
   "devDependencies": {
-    "eslint": "^9.22.0",
-    "prettier": "^3.5.3",
-    "tsup": "^8.4.0",
-    "turbo": "^2.4.4",
-    "typescript": "^5.8.2"
-  }
+    "@babel/core": "^7.25.2",
+    "@types/react": "~18.3.12",
+    "typescript": "^5.3.3"
+  },
+  "private": true,
+  "packageManager": "yarn@3.8.7"
 }
