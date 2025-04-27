@@ -16,5 +16,5 @@ export const AppRouter = () => {
         <Stack.Screen name="ImagePage" component={ImagePage} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  ); 
 }
