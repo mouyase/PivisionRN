@@ -3,37 +3,23 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "prebuild": "expo prebuild --clean --platform android",
-    "start": "expo start",
-    "android": "expo run:android --port 60000",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
-    "lint": "eslint ."
+    "start": "expo start -c --port 12450",
+    "android": "expo start -a -c --port 12450",
+    "ios": "expo start -i -c --port 12450",
+    "web": "expo start -w -c --port 12450"
   },
   "dependencies": {
-    "@react-navigation/native": "^7.1.6",
-    "@react-navigation/native-stack": "^7.3.10",
-    "expo": "~53.0.0-preview.11",
-    "expo-image": "~2.1.4",
-    "expo-status-bar": "~2.2.1",
-    "expo-system-ui": "~5.0.4",
+    "expo": "53.0.11",
+    "expo-image": "~2.3.0",
+    "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
-    "react-native": "0.79.1",
-    "react-native-edge-to-edge": "^1.6.0",
-    "react-native-reanimated": "~3.17.4",
-    "react-native-safe-area-context": "5.3.0",
-    "react-native-screens": "~4.10.0"
+    "react-native": "0.79.3",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
-    "eslint": "^9.25.1",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-config-react-native-flat": "0.79.1",
-    "eslint-plugin-prettier": "^5.2.6",
-    "prettier": "^3.5.3",
-    "typescript": "^5.3.3"
+    "typescript": "~5.8.3"
   },
-  "private": true,
-  "packageManager": "yarn@3.8.7"
+  "private": true
 }

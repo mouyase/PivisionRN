@@ -36,17 +36,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  // i18n-ally 设置
-  // 设置 i18n-ally 显示语言为简体中文
-  "i18n-ally.displayLanguage": "zh-CN",
-  // 设置 i18n-ally 键样式为嵌套式
-  "i18n-ally.keystyle": "nested",
-  // 设置 i18n-ally 本地化文件路径
-  "i18n-ally.localesPaths": [
-    "src/locales"
-  ],
-  // 设置 i18n-ally 源语言为简体中文
-  "i18n-ally.sourceLanguage": "zh-CN",
   // JavaScript 设置
   // 设置 JavaScript 导入模块说明符为非相对路径
   "javascript.preferences.importModuleSpecifier": "non-relative",

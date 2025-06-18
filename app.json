@@ -20,21 +20,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "tech.yojigen.pivision.rn"
+      "edgeToEdgeEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      [
-        "react-native-edge-to-edge",
-        {
-          "android": {
-            "parentTheme": "Light",
-            "enforceNavigationBarContrast": false
-          }
-        }
-      ]
-    ]
+    }
   }
 }
