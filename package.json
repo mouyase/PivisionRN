@@ -6,7 +6,8 @@
     "start": "expo start -c --port 12450",
     "android": "expo start -a -c --port 12450",
     "ios": "expo start -i -c --port 12450",
-    "web": "expo start -w -c --port 12450"
+    "web": "expo start -w -c --port 12450",
+    "lint": "expo lint"
   },
   "dependencies": {
     "expo": "53.0.11",
@@ -19,6 +20,11 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~9.2.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "prettier": "^3.5.3",
     "typescript": "~5.8.3"
   },
   "private": true
