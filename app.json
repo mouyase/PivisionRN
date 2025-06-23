@@ -12,6 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "scheme": "pixiv",
     "ios": {
       "supportsTablet": true
     },
@@ -20,10 +21,65 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.PivisionRN",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "http"
+            },
+            {
+              "scheme": "https"
+            },
+            {
+              "scheme": "pixiv"
+            },
+            {
+              "host": "pixiv.net"
+            },
+            {
+              "host": "app-api.pixiv.net"
+            },
+            {
+              "host": "script"
+            },
+            {
+              "host": "i.pximg.net"
+            },
+            {
+              "host": "www.pixiv.net"
+            },
+            {
+              "host": "pixiv.me"
+            },
+            {
+              "host": "www.pixiv.me"
+            },
+            {
+              "host": "users"
+            },
+            {
+              "host": "illusts"
+            },
+            {
+              "host": "account"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }

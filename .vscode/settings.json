@@ -1,76 +1,104 @@
 {
-  // 编辑器设置
-  // 保存时自动格式化
-  "editor.formatOnSave": true,
-  // 设置默认格式化工具为 ESLint
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  // 保存时自动修复 ESLint 问题
+  // 禁用内置CSS验证，使用ESLint等工具替代
+  "css.validate": false,
+  // 文件保存时自动执行ESLint修复
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  // ESLint 设置
-  // 启用 ESLint 格式化
+  // 设置默认格式化程序为ESLint
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  // 保存时自动格式化文件
+  "editor.formatOnSave": true,
+  // 启用ESLint格式化功能
   "eslint.format.enable": true,
-  // 文件类型特定设置
-  // JavaScript 文件的特定设置
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // 文件搜索时排除的目录和文件
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
   },
-  // JavaScript React 文件的特定设置
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  // JSON 文件的特定设置
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  // TypeScript React 文件的特定设置
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  // Markdown 文件的特定设置
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
-  // TypeScript 文件的特定设置
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  // JavaScript 设置
-  // 设置 JavaScript 导入模块说明符为非相对路径
+  // JavaScript导入路径偏好设置：使用非相对路径
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  // 设置 JavaScript 导入模块说明符结尾为最小化
+  // JavaScript导入路径结尾偏好设置：最小化
   "javascript.preferences.importModuleSpecifierEnding": "minimal",
-  // 设置 JavaScript 文件移动时自动更新导入
+  // 文件移动时自动更新导入路径
   "javascript.updateImportsOnFileMove.enabled": "always",
-  // 设置 JavaScript 粘贴时自动更新导入
+  // 粘贴代码时自动更新导入路径
   "javascript.updateImportsOnPaste.enabled": true,
-  // TailwindCSS 设置
-  // 设置 TailwindCSS 识别的类属性名称
+  // 搜索时排除的目录和文件
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  // TailwindCSS类名属性识别
   "tailwindCSS.classAttributes": [
     "style"
   ],
-  // 设置 TailwindCSS 实验性正则表达式匹配模式
-  "tailwindCSS.experimental.classRegex": [
-    // 匹配 tw`...` 模板字符串语法
-    "tw`([^`]*)",
-    // 匹配 tw('...') 模板字符串语法
-    "tw\\('([^']*)'\\)",
-    // 匹配 tw.style(...) 函数调用语法中的字符串
-    [
-      "tw.style\\(([^)]*)\\)",
-      "'([^']*)'"
-    ]
+  // TailwindCSS类名函数识别
+  "tailwindCSS.classFunctions": [
+    "tw",
+    "tw.color",
+    "tw.style"
   ],
-  // TypeScript 设置
-  // 设置 TypeScript 导入模块说明符为非相对路径
+  // TypeScript导入路径偏好设置：使用非相对路径
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  // 设置 TypeScript 导入模块说明符结尾为最小化
+  // TypeScript导入路径结尾偏好设置：最小化
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
-  // 设置 TypeScript 文件移动时自动更新导入
+  // 指定TypeScript服务器路径
+  "typescript.tsdk": "node_modules/typescript/lib",
+  // 文件移动时自动更新导入路径
   "typescript.updateImportsOnFileMove.enabled": "always",
-  // 设置 TypeScript 粘贴时自动更新导入
+  // 粘贴代码时自动更新导入路径
   "typescript.updateImportsOnPaste.enabled": true,
-  // 设置 TypeScript SDK 路径
-  "typescript.tsdk": "node_modules/typescript/lib"
+  // 启用TypeScript验证
+  "typescript.validate.enable": true,
+  // 禁用自动从package.json导入
+  "typescript.preferences.includePackageJsonAutoImports": "off",
+  // 启用自动导入建议
+  "typescript.suggest.autoImports": true,
+  // 禁用TypeScript调查问卷
+  "typescript.surveys.enabled": false,
+  // 禁用自动可选链补全
+  "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+  // 参数名内联提示设置：仅显示字面量
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  // 禁用变量类型内联提示
+  "typescript.inlayHints.variableTypes.enabled": false,
+  // 禁用函数返回类型内联提示
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+  // 禁用属性声明类型内联提示
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
+  // 禁用参数类型内联提示
+  "typescript.inlayHints.parameterTypes.enabled": false,
+  // 禁用枚举成员值内联提示
+  "typescript.inlayHints.enumMemberValues.enabled": false,
+  // JavaScript文件默认格式化程序设置
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // JavaScript React文件默认格式化程序设置
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // JSON文件默认格式化程序设置
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // Markdown文件默认格式化程序设置
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  // TypeScript文件默认格式化程序设置
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // TypeScript React文件默认格式化程序设置
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
 }

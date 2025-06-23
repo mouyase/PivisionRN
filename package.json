@@ -4,28 +4,41 @@
   "main": "index.ts",
   "scripts": {
     "start": "expo start -c --port 12450",
-    "android": "expo start -a -c --port 12450",
+    "android": "expo run:android --port 12450",
+    "prebuild:android": "expo prebuild --bun --clean --platform android",
     "ios": "expo start -i -c --port 12450",
     "web": "expo start -w -c --port 12450",
     "lint": "expo lint"
   },
   "dependencies": {
-    "expo": "53.0.11",
+    "expo": "53.0.12",
+    "expo-auth-session": "~6.2.0",
+    "expo-crypto": "~14.1.5",
     "expo-image": "~2.3.0",
+    "expo-secure-store": "~14.2.3",
     "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
-    "react-native": "0.79.3",
+    "react-native": "0.79.4",
+    "react-native-mmkv": "^3.2.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "5.4.0",
+    "twrnc": "^4.8.0",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@eslint/js": "^9.25.1",
     "@types/react": "~19.0.10",
-    "eslint": "^9.0.0",
+    "eslint": "^9.29.0",
     "eslint-config-expo": "~9.2.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "prettier": "^3.5.3",
-    "typescript": "~5.8.3"
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.31.1"
   },
   "private": true
 }
