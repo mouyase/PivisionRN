@@ -1,8 +1,9 @@
-import { registerRootComponent } from "expo";
+import "expo-router/entry";
+import * as Sentry from "@sentry/react-native";
 
-import App from "./App";
-
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
+Sentry.init({
+  dsn: "https://3068ef13b008468e863747387f0a83e6@bugsink.yojigen.cn/1",
+  // Adds more context data to events (IP address, cookies, user, etc.)
+  // For more information, visit: https://docs.sentry.io/platforms/react-native/data-management/data-collected/
+  sendDefaultPii: true,
+});

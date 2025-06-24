@@ -12,7 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "scheme": "pixiv",
+    "scheme": "pivision",
     "ios": {
       "supportsTablet": true
     },
@@ -36,6 +36,9 @@
             },
             {
               "scheme": "pixiv"
+            },
+            {
+              "scheme": "pivision"
             },
             {
               "host": "pixiv.net"
@@ -79,7 +82,18 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-web-browser",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://bugsink.yojigen.cn/",
+          "note": "Use SENTRY_AUTH_TOKEN env to authenticate with Sentry.",
+          "project": "PivisionRN",
+          "organization": "YojigenTech"
+        }
+      ],
+      "expo-router"
     ]
   }
 }
