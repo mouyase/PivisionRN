@@ -1,7 +1,7 @@
 // components/PixivLoginButton.tsx
 import React from "react";
 import { View, Text, Button, StyleSheet, Alert } from "react-native";
-import { usePixivAuth } from "../hooks/usePixivAuth";
+import { usePixivAuth } from "../hooks/usePixivAuth1";
 
 export function PixivLoginButton() {
   const { user, isLoading, error, login, logout, isAuthenticated } =
