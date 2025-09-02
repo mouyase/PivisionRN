@@ -11,17 +11,17 @@
     "web": "bun --bun expo start --web"
   },
   "dependencies": {
-    "expo": "54.0.0-preview.8",
-    "expo-status-bar": "~3.0.4",
+    "expo": "54.0.0-preview.12",
+    "expo-status-bar": "~3.0.6",
     "nativewind": "latest",
     "react": "19.1.0",
-    "react-native": "0.81.0",
-    "react-native-reanimated": "~4.0.2",
-    "react-native-safe-area-context": "~5.6.0"
+    "react-native": "0.81.1",
+    "react-native-reanimated": "~4.0.3",
+    "react-native-safe-area-context": "~5.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.3",
-    "@types/react": "~19.1.10",
+    "@types/react": "~19.1.12",
     "eslint": "^9.34.0",
     "eslint-config-expo": "~10.0.0",
     "eslint-config-prettier": "^10.1.8",
