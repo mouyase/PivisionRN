@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss",
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "headerClassName"
+  ]
+}
