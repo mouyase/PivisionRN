@@ -1,4 +1,1 @@
 nodeLinker: hoisted
-
-onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
