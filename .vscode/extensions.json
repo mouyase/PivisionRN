@@ -1,1 +1,11 @@
-{ "recommendations": ["expo.vscode-expo-tools"] }
+{
+  "recommendations": [
+    "expo.vscode-expo-tools",
+    "vscode-icons-team.vscode-icons",
+    "bradlc.vscode-tailwindcss",
+    "yzhang.markdown-all-in-one",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "naumovs.color-highlight"
+  ]
+}
