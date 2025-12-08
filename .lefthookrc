@@ -1,0 +1,9 @@
+colors: true
+no_tty: false
+skip_output:
+  - meta
+  - summary
+  - empty_summary
+  - success
+  - execution
+  - execution_info

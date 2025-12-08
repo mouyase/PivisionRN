@@ -1,0 +1,23 @@
+rc: .lefthookrc
+pre-commit:
+  commands:
+    format:
+      glob: "*.{ts,tsx}"
+      run: oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+    type:
+      glob: "*.{ts,tsx}"
+      run: tsc --jsx react-native --noEmit --locale zh-CN
+    oxlint:
+      glob: "*.{ts,tsx}"
+      run: oxlint --type-aware --type-check --fix {staged_files}
+      stage_fixed: true
+    eslint:
+      glob: "*.{ts,tsx}"
+      run: eslint --fix {staged_files}
+      stage_fixed: true
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: commitlint --edit

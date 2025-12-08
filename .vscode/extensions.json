@@ -6,6 +6,10 @@
     "yzhang.markdown-all-in-one",
     "dbaeumer.vscode-eslint",
     "usernamehw.errorlens",
-    "naumovs.color-highlight"
+    "naumovs.color-highlight",
+    "oxc.oxc-vscode",
+    "bierner.markdown-mermaid",
+    "redhat.vscode-yaml",
+    "lokalise.i18n-ally"
   ]
 }

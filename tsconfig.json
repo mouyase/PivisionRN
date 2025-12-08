@@ -6,12 +6,19 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "module": "ESNext",
+    "allowUmdGlobalAccess": true
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
+    "src/@types/*.d.ts",
     "expo-env.d.ts"
+  ],
+  "exclude": [
+    "**/*.js",
+    "**/*.jsx"
   ]
 }

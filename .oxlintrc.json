@@ -1,71 +1,48 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": {
+    "builtin": true
+  },
+  "ignorePatterns": [
+    "tailwind.config.js"
+  ],
   "plugins": [
     "typescript",
     "import",
     "react",
-    "unicorn",
+    "unicorn"
   ],
-  "env": {
-    "builtin": true,
-  },
-  "jsPlugins": [
-    "eslint-plugin-better-tailwindcss"
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.ts", "**/__tests__/**/*.tsx"],
+      "rules": {
+        "import/first": "off"
+      }
+    }
   ],
   "rules": {
-    "for-direction": "error",
-    "no-async-promise-executor": "error",
-    "no-case-declarations": "error",
-    "no-compare-neg-zero": "error",
-    "no-cond-assign": "error",
-    "no-constant-binary-expression": "error",
-    "no-constant-condition": "error",
-    "no-control-regex": "error",
-    "no-debugger": "error",
-    "no-delete-var": "error",
-    "no-dupe-else-if": "error",
-    "no-duplicate-case": "error",
-    "no-empty": "error",
-    "no-empty-character-class": "warn",
-    "no-empty-pattern": "warn",
-    "no-empty-static-block": "error",
-    "no-ex-assign": "error",
-    "no-extra-boolean-cast": "error",
-    "no-fallthrough": "error",
-    "no-global-assign": "error",
-    "no-invalid-regexp": "error",
-    "no-irregular-whitespace": "error",
-    "no-loss-of-precision": "error",
-    "no-nonoctal-decimal-escape": "error",
-    "no-prototype-builtins": "error",
-    "no-regex-spaces": "error",
-    "no-self-assign": "error",
-    "no-shadow-restricted-names": "error",
-    "no-sparse-arrays": "error",
-    "no-unsafe-finally": "error",
-    "no-unsafe-optional-chaining": "error",
-    "no-unused-labels": "warn",
-    "no-unused-private-class-members": "error",
-    "no-unused-vars": [
+    "@typescript-eslint/array-type": [
       "warn",
       {
-        "vars": "all",
-        "args": "after-used",
-        "ignoreRestSiblings": true,
-        "varsIgnorePattern": "^_",
-        "argsIgnorePattern": "^_"
+        "default": "array"
       }
     ],
-    "no-useless-backreference": "error",
-    "no-useless-catch": "error",
-    "no-useless-escape": "error",
-    "require-yield": "error",
-    "use-isnan": "error",
-    "valid-typeof": "error",
     "@typescript-eslint/ban-ts-comment": "error",
-    "no-array-constructor": "error",
+    "@typescript-eslint/consistent-type-definitions": [
+      "error",
+      "type"
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "fixStyle": "inline-type-imports"
+      }
+    ],
     "@typescript-eslint/no-duplicate-enum-values": "error",
+    "@typescript-eslint/no-empty-object-type": "warn",
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-extra-non-null-assertion": "warn",
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-namespace": "error",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
@@ -73,23 +50,128 @@
     "@typescript-eslint/no-unnecessary-type-constraint": "error",
     "@typescript-eslint/no-unsafe-declaration-merging": "error",
     "@typescript-eslint/no-unsafe-function-type": "error",
-    "no-unused-expressions": "warn",
+    "@typescript-eslint/no-wrapper-object-types": "warn",
     "@typescript-eslint/prefer-as-const": "error",
+    "@typescript-eslint/prefer-for-of": "error",
+    "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
     "@typescript-eslint/triple-slash-reference": "error",
+    "@typescript-eslint/unbound-method": "off",
+    "curly": "error",
+    "eqeqeq": "error",
+    "for-direction": "error",
+    "import/first": "warn",
     "import/namespace": "error",
+    "import/no-duplicates": "warn",
     "import/no-named-as-default": "warn",
     "import/no-named-as-default-member": "warn",
-    "import/no-duplicates": "warn",
-    "eqeqeq": "error",
+    "no-array-constructor": "error",
+    "no-async-promise-executor": "error",
+    "no-case-declarations": "error",
+    "no-class-assign": "off",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": "error",
+    "no-const-assign": "off",
+    "no-constant-binary-expression": "error",
+    "no-constant-condition": "error",
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-delete-var": "error",
+    "no-dupe-class-members": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-duplicate-imports": "error",
+    "no-empty": "error",
+    "no-empty-character-class": "warn",
+    "no-empty-pattern": "warn",
+    "no-empty-static-block": "error",
+    "no-ex-assign": "error",
     "no-extend-native": "warn",
     "no-extra-bind": "warn",
-    "unicode-bom": [
-      "warn",
-      "never"
+    "no-extra-boolean-cast": "off",
+    "no-fallthrough": "error",
+    "no-func-assign": "off",
+    "no-global-assign": "error",
+    "no-import-assign": "off",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-loss-of-precision": "error",
+    "no-nested-ternary": "error",
+    "no-new-native-nonconstructor": "off",
+    "no-nonoctal-decimal-escape": "error",
+    "no-obj-calls": "off",
+    "no-prototype-builtins": "error",
+    "no-redeclare": "warn",
+    "no-regex-spaces": "error",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": [
+              "**/src",
+              "**/src/**",
+              "**/lib",
+              "**/lib/**",
+              "!@/src",
+              "!@/src/**",
+              "!@/src/lib",
+              "!@/src/lib/**"
+            ],
+            "message": "\n不要从其他库的 src 或 lib 里导入！赶紧看看是不是导入错了！"
+          },
+          {
+            "group": [
+              "react-native-safe-area-context"
+            ],
+            "importNames": [
+              "SafeAreaView"
+            ],
+            "message": "\n不要使用原版的 SafeAreaView，请使用 @/src/shared/components/safe-area-view"
+          }
+        ]
+      }
     ],
-    "import/first": "warn",
+    "no-return-await": "error",
+    "no-self-assign": "error",
+    "no-setter-return": "off",
+    "no-shadow-restricted-names": "error",
+    "no-sparse-arrays": "error",
+    "no-this-before-super": "off",
+    "no-unsafe-finally": "error",
+    "no-unsafe-negation": "off",
+    "no-unsafe-optional-chaining": "error",
+    "no-unused-expressions": "warn",
+    "no-unused-labels": "warn",
+    "no-unused-private-class-members": "error",
+    "no-unused-vars": [
+      "off",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "local",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "no-useless-backreference": "error",
+    "no-useless-catch": "error",
+    "no-useless-constructor": "warn",
+    "no-useless-escape": "error",
     "no-var": "error",
+    "no-with": "off",
+    "prefer-rest-params": "error",
+    "prefer-spread": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-curly-brace-presence": [
+      "warn",
+      {
+        "children": "ignore",
+        "props": "always"
+      }
+    ],
     "react/jsx-key": "error",
     "react/jsx-no-comment-textnodes": "error",
     "react/jsx-no-duplicate-props": "error",
@@ -103,55 +185,14 @@
     "react/no-string-refs": "error",
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "warn",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "curly": "error",
-    "no-duplicate-imports": "error",
-    "no-nested-ternary": "error",
     "require-await": "error",
-    "@typescript-eslint/consistent-type-definitions": [
+    "require-yield": "error",
+    "typescript-eslint/no-require-imports": "off",
+    "unicode-bom": [
       "warn",
-      "type"
+      "never"
     ],
-    "@typescript-eslint/prefer-for-of": "error",
-    "@typescript-eslint/prefer-function-type": "error",
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
-      {
-        "fixStyle": "inline-type-imports"
-      }
-    ],
-    "react/jsx-curly-brace-presence": [
-      "error",
-      {
-        "props": "always",
-        "children": "ignore"
-      }
-    ],
-    "no-class-assign": "off",
-    "no-const-assign": "off",
-    "no-dupe-class-members": "off",
-    "no-dupe-keys": "off",
-    "no-func-assign": "off",
-    "no-import-assign": "off",
-    "no-new-native-nonconstructor": "off",
-    "no-obj-calls": "off",
-    "no-setter-return": "off",
-    "no-this-before-super": "off",
-    "no-unsafe-negation": "off",
-    "no-with": "off",
-    "prefer-rest-params": "error",
-    "prefer-spread": "error",
-    "@typescript-eslint/array-type": [
-      "warn",
-      {
-        "default": "array"
-      }
-    ],
-    "@typescript-eslint/no-empty-object-type": "warn",
-    "@typescript-eslint/no-wrapper-object-types": "warn",
-    "@typescript-eslint/no-extra-non-null-assertion": "warn",
-    "no-redeclare": "warn",
-    "no-useless-constructor": "warn",
-  },
+    "use-isnan": "error",
+    "valid-typeof": "error"
+  }
 }
